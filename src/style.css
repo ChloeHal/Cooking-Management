@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+@plugin 'daisyui' {
+  themes: winter;
+}
+
+/* Override for accordion smooth transition */
+.collapse-content {
+  transition: max-height 0.2s ease-out;
+}
