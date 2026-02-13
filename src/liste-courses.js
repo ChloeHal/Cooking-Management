@@ -95,7 +95,7 @@ function renderListeGeneree() {
             <li class="flex items-center gap-3 py-2">
               <input type="checkbox" ${item.coche ? 'checked' : ''} data-index="${i}" class="checkbox checkbox-sm checkbox-success cb-item" />
               <span class="flex-1 text-sm ${item.coche ? 'line-through text-base-content/40' : ''}">${item.nom}</span>
-              <span class="text-xs text-base-content/50">${item.quantite}</span>
+              <input type="text" value="${item.quantite}" data-index="${i}" class="input input-bordered input-xs w-24 text-xs text-right edit-qty-item" />
               <button class="btn btn-ghost btn-xs text-error btn-remove-item" data-index="${i}">✕</button>
             </li>
           `
@@ -124,6 +124,13 @@ function attachListeEvents() {
       const i = parseInt(cb.dataset.index);
       listeGeneree.items[i].coche = cb.checked;
       renderListeCourses();
+    });
+  });
+
+  document.querySelectorAll('.edit-qty-item').forEach((input) => {
+    input.addEventListener('change', () => {
+      const i = parseInt(input.dataset.index);
+      listeGeneree.items[i].quantite = input.value.trim();
     });
   });
 

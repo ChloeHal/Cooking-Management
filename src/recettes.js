@@ -1,9 +1,10 @@
-import { getRecettes, ajouterRecette, supprimerRecette } from './store.js';
+import { getRecettes, ajouterRecette, supprimerRecette, modifierRecette } from './store.js';
 
 let ingredientsTemp = [];
 let etapesTemp = [];
 let tagsTemp = { allergies: [], thematiques: [], repas: [] };
 let imageBase64 = null;
+let editingRecetteId = null;
 
 const TAG_OPTIONS = {
   allergies: ['Gluten', 'Lactose', 'Arachides', 'Fruits a coque', 'Oeufs', 'Soja', 'Poisson', 'Crustaces', 'Celeri', 'Moutarde', 'Sesame'],
@@ -140,8 +141,40 @@ function resetForm() {
   etapesTemp = [];
   tagsTemp = { allergies: [], thematiques: [], repas: [] };
   imageBase64 = null;
+  editingRecetteId = null;
   const form = document.getElementById('form-recette');
   if (form) form.reset();
+  const title = document.getElementById('modal-recette-title');
+  if (title) title.textContent = 'Nouvelle recette';
+  const submitBtn = document.getElementById('btn-submit-recette');
+  if (submitBtn) submitBtn.textContent = 'Enregistrer la recette';
+  refreshIngredientsList();
+  refreshEtapesList();
+  refreshTagsUI();
+  refreshImagePreview();
+}
+
+function fillFormForEdit(r) {
+  editingRecetteId = r.id;
+  ingredientsTemp = r.ingredients ? r.ingredients.map((i) => ({ ...i })) : [];
+  etapesTemp = r.etapes ? [...r.etapes] : [];
+  tagsTemp = {
+    allergies: r.tags?.allergies ? [...r.tags.allergies] : [],
+    thematiques: r.tags?.thematiques ? [...r.tags.thematiques] : [],
+    repas: r.tags?.repas ? [...r.tags.repas] : [],
+  };
+  imageBase64 = r.image || null;
+
+  const nomInput = document.getElementById('nom-recette');
+  const lienInput = document.getElementById('lien-recette');
+  if (nomInput) nomInput.value = r.nom || '';
+  if (lienInput) lienInput.value = r.lien || '';
+
+  const title = document.getElementById('modal-recette-title');
+  if (title) title.textContent = 'Modifier la recette';
+  const submitBtn = document.getElementById('btn-submit-recette');
+  if (submitBtn) submitBtn.textContent = 'Enregistrer les modifications';
+
   refreshIngredientsList();
   refreshEtapesList();
   refreshTagsUI();
@@ -180,7 +213,7 @@ export async function renderRecettes() {
         <form method="dialog">
           <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
-        <h3 class="font-bold text-lg mb-4">Nouvelle recette</h3>
+        <h3 id="modal-recette-title" class="font-bold text-lg mb-4">Nouvelle recette</h3>
         <form id="form-recette" class="flex flex-col gap-3">
           <input type="text" id="nom-recette" placeholder="Nom de la recette" class="input input-bordered w-full" required />
           <input type="text" id="lien-recette" placeholder="Lien vers la recette (optionnel)" class="input input-bordered w-full" />
@@ -218,7 +251,7 @@ export async function renderRecettes() {
           </div>
           <ol id="etapes-list" class="flex flex-col gap-1"></ol>
 
-          <button type="submit" class="btn btn-primary w-full mt-2">Enregistrer la recette</button>
+          <button type="submit" id="btn-submit-recette" class="btn btn-primary w-full mt-2">Enregistrer la recette</button>
         </form>
       </div>
       <form method="dialog" class="modal-backdrop"><button>close</button></form>
@@ -338,12 +371,8 @@ export async function renderRecettes() {
     const lien = document.getElementById('lien-recette').value.trim();
 
     if (!nom) return;
-    if (ingredientsTemp.length === 0) {
-      alert('Ajoutez au moins un ingredient.');
-      return;
-    }
 
-    await ajouterRecette({
+    const data = {
       nom,
       lien: lien || null,
       image: imageBase64,
@@ -354,7 +383,13 @@ export async function renderRecettes() {
       },
       ingredients: [...ingredientsTemp],
       etapes: [...etapesTemp],
-    });
+    };
+
+    if (editingRecetteId) {
+      await modifierRecette(editingRecetteId, data);
+    } else {
+      await ajouterRecette(data);
+    }
 
     resetForm();
     closeModal();
@@ -391,10 +426,17 @@ export async function renderRecettes() {
             : ''
         }
 
-        <div class="mt-4">
-          <button class="btn btn-error btn-sm btn-outline btn-delete-from-detail" data-id="${r.id}">Supprimer cette recette</button>
+        <div class="mt-4 flex gap-2">
+          <button class="btn btn-primary btn-sm btn-outline btn-edit-from-detail" data-id="${r.id}">Modifier</button>
+          <button class="btn btn-error btn-sm btn-outline btn-delete-from-detail" data-id="${r.id}">Supprimer</button>
         </div>
       `;
+
+      document.querySelector('.btn-edit-from-detail').addEventListener('click', () => {
+        document.getElementById('modal-detail').close();
+        fillFormForEdit(r);
+        openModal();
+      });
 
       document.querySelector('.btn-delete-from-detail').addEventListener('click', async () => {
         if (confirm('Supprimer cette recette ?')) {
