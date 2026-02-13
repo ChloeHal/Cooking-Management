@@ -3,9 +3,9 @@ import { refreshTab } from './main.js';
 
 let listeGeneree = null;
 
-export function renderListeCourses() {
+export async function renderListeCourses() {
   const container = document.getElementById('liste-courses');
-  const recettes = getRecettes();
+  const recettes = await getRecettes();
 
   container.innerHTML = `
     <div class="card bg-base-100 shadow-sm mb-6">
@@ -152,10 +152,10 @@ function attachListeEvents() {
     });
   });
 
-  document.getElementById('btn-save-list').addEventListener('click', () => {
+  document.getElementById('btn-save-list').addEventListener('click', async () => {
     const nom = document.getElementById('nom-liste').value.trim();
 
-    ajouterListe({
+    await ajouterListe({
       nom: nom || null,
       items: listeGeneree.items.map((item) => ({ ...item })),
       recettes: listeGeneree.recettesNoms,

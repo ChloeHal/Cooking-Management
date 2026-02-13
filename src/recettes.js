@@ -160,9 +160,9 @@ function closeModal() {
 
 // --- Main render ---
 
-export function renderRecettes() {
+export async function renderRecettes() {
   const container = document.getElementById('recettes');
-  const recettes = getRecettes();
+  const recettes = await getRecettes();
 
   container.innerHTML = `
     <!-- Banner CTA -->
@@ -332,7 +332,7 @@ export function renderRecettes() {
   });
 
   // Submit
-  document.getElementById('form-recette').addEventListener('submit', (e) => {
+  document.getElementById('form-recette').addEventListener('submit', async (e) => {
     e.preventDefault();
     const nom = document.getElementById('nom-recette').value.trim();
     const lien = document.getElementById('lien-recette').value.trim();
@@ -343,7 +343,7 @@ export function renderRecettes() {
       return;
     }
 
-    ajouterRecette({
+    await ajouterRecette({
       nom,
       lien: lien || null,
       image: imageBase64,
@@ -396,9 +396,9 @@ export function renderRecettes() {
         </div>
       `;
 
-      document.querySelector('.btn-delete-from-detail').addEventListener('click', () => {
+      document.querySelector('.btn-delete-from-detail').addEventListener('click', async () => {
         if (confirm('Supprimer cette recette ?')) {
-          supprimerRecette(id);
+          await supprimerRecette(id);
           document.getElementById('modal-detail').close();
           renderRecettes();
         }

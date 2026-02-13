@@ -2,9 +2,9 @@ import { getListes, modifierListe, supprimerListe } from './store.js';
 
 let editingListeId = null;
 
-export function renderHistorique() {
+export async function renderHistorique() {
   const container = document.getElementById('historique');
-  const listes = getListes();
+  const listes = await getListes();
 
   container.innerHTML = `
     <h2 class="text-xl font-bold mb-4">Historique des listes</h2>
@@ -80,15 +80,15 @@ export function renderHistorique() {
 
   // Toggle item check
   document.querySelectorAll('.cb-hist-item').forEach((cb) => {
-    cb.addEventListener('change', (e) => {
+    cb.addEventListener('change', async (e) => {
       e.stopPropagation();
       const listeId = parseInt(cb.dataset.liste);
       const index = parseInt(cb.dataset.index);
-      const listes = getListes();
+      const listes = await getListes();
       const liste = listes.find((l) => l.id === listeId);
       if (liste) {
         liste.items[index].coche = cb.checked;
-        modifierListe(listeId, { items: liste.items });
+        await modifierListe(listeId, { items: liste.items });
         // Keep accordion open after update
         reopenAfterRender(listeId);
       }
@@ -97,15 +97,15 @@ export function renderHistorique() {
 
   // Remove item
   document.querySelectorAll('.btn-remove-hist-item').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', async (e) => {
       e.stopPropagation();
       const listeId = parseInt(btn.dataset.liste);
       const index = parseInt(btn.dataset.index);
-      const listes = getListes();
+      const listes = await getListes();
       const liste = listes.find((l) => l.id === listeId);
       if (liste) {
         liste.items.splice(index, 1);
-        modifierListe(listeId, { items: liste.items });
+        await modifierListe(listeId, { items: liste.items });
         reopenAfterRender(listeId);
       }
     });
@@ -113,7 +113,7 @@ export function renderHistorique() {
 
   // Add item
   document.querySelectorAll('.btn-add-hist-item').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', async (e) => {
       e.stopPropagation();
       const listeId = parseInt(btn.dataset.liste);
       const nomInput = document.querySelector(`.hist-add-nom[data-liste="${listeId}"]`);
@@ -121,11 +121,11 @@ export function renderHistorique() {
       const nom = nomInput.value.trim();
       const qty = qtyInput.value.trim();
       if (nom && qty) {
-        const listes = getListes();
+        const listes = await getListes();
         const liste = listes.find((l) => l.id === listeId);
         if (liste) {
           liste.items.push({ nom, quantite: qty, coche: false });
-          modifierListe(listeId, { items: liste.items });
+          await modifierListe(listeId, { items: liste.items });
           reopenAfterRender(listeId);
         }
       }
@@ -154,13 +154,13 @@ export function renderHistorique() {
   });
 
   document.querySelectorAll('.btn-save-nom').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', async (e) => {
       e.stopPropagation();
       const id = parseInt(btn.dataset.id);
       const input = document.querySelector(`.edit-nom-liste[data-id="${id}"]`);
       const newNom = input.value.trim();
       if (newNom) {
-        modifierListe(id, { nom: newNom });
+        await modifierListe(id, { nom: newNom });
       }
       editingListeId = null;
       reopenAfterRender(id);
@@ -179,10 +179,10 @@ export function renderHistorique() {
 
   // Delete
   document.querySelectorAll('.btn-delete-liste').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', async (e) => {
       e.stopPropagation();
       if (confirm('Supprimer cette liste ?')) {
-        supprimerListe(parseInt(btn.dataset.id));
+        await supprimerListe(parseInt(btn.dataset.id));
         renderHistorique();
       }
     });

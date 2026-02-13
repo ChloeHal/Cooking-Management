@@ -1,78 +1,55 @@
-// LocalStorage data management
-
-const KEYS = {
-  recettes: 'cm-recettes',
-  listes: 'cm-listes',
-};
-
-function load(key) {
-  try {
-    return JSON.parse(localStorage.getItem(key)) || [];
-  } catch {
-    return [];
-  }
-}
-
-function save(key, data) {
-  localStorage.setItem(key, JSON.stringify(data));
-}
+// API-backed data management
+import {
+  fetchRecettes,
+  createRecette,
+  updateRecette as apiUpdateRecette,
+  deleteRecette as apiDeleteRecette,
+  fetchListes,
+  createListe,
+  updateListe as apiUpdateListe,
+  deleteListe as apiDeleteListe,
+} from './api.js';
 
 // --- Recettes ---
 
-export function getRecettes() {
-  return load(KEYS.recettes);
+export async function getRecettes() {
+  return fetchRecettes();
 }
 
-export function ajouterRecette(recette) {
-  const recettes = getRecettes();
-  recette.id = Date.now();
-  recettes.push(recette);
-  save(KEYS.recettes, recettes);
-  return recette;
+export async function ajouterRecette(recette) {
+  const result = await createRecette(recette);
+  return { ...recette, id: result.id };
 }
 
-export function supprimerRecette(id) {
-  const recettes = getRecettes().filter((r) => r.id !== id);
-  save(KEYS.recettes, recettes);
+export async function supprimerRecette(id) {
+  await apiDeleteRecette(id);
 }
 
-export function modifierRecette(id, data) {
-  const recettes = getRecettes();
-  const index = recettes.findIndex((r) => r.id === id);
-  if (index !== -1) {
-    recettes[index] = { ...recettes[index], ...data };
-    save(KEYS.recettes, recettes);
-  }
+export async function modifierRecette(id, data) {
+  await apiUpdateRecette(id, data);
 }
 
 // --- Listes de courses ---
 
-export function getListes() {
-  return load(KEYS.listes);
+export async function getListes() {
+  return fetchListes();
 }
 
-export function ajouterListe(liste) {
-  const listes = getListes();
-  liste.id = Date.now();
-  liste.date = new Date().toLocaleDateString('fr-FR');
+export async function ajouterListe(liste) {
+  if (!liste.date) {
+    liste.date = new Date().toLocaleDateString('fr-FR');
+  }
   if (!liste.nom) {
     liste.nom = liste.date;
   }
-  listes.unshift(liste);
-  save(KEYS.listes, listes);
-  return liste;
+  const result = await createListe(liste);
+  return { ...liste, id: result.id };
 }
 
-export function modifierListe(id, data) {
-  const listes = getListes();
-  const index = listes.findIndex((l) => l.id === id);
-  if (index !== -1) {
-    listes[index] = { ...listes[index], ...data };
-    save(KEYS.listes, listes);
-  }
+export async function modifierListe(id, data) {
+  await apiUpdateListe(id, data);
 }
 
-export function supprimerListe(id) {
-  const listes = getListes().filter((l) => l.id !== id);
-  save(KEYS.listes, listes);
+export async function supprimerListe(id) {
+  await apiDeleteListe(id);
 }

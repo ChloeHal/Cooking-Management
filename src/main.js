@@ -42,10 +42,10 @@ document.querySelectorAll('.tab').forEach((btn) => {
   });
 });
 
-export function refreshTab(tab) {
-  if (tab === 'recettes') renderRecettes();
-  if (tab === 'liste-courses') renderListeCourses();
-  if (tab === 'historique') renderHistorique();
+export async function refreshTab(tab) {
+  if (tab === 'recettes') await renderRecettes();
+  if (tab === 'liste-courses') await renderListeCourses();
+  if (tab === 'historique') await renderHistorique();
 }
 
 // Initial render
