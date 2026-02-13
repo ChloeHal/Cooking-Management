@@ -3,6 +3,52 @@ import { refreshTab } from './main.js';
 
 let listeGeneree = null;
 
+function refreshModalList() {
+  const list = document.getElementById('shopping-list');
+  if (!list || !listeGeneree) return;
+
+  list.innerHTML = listeGeneree.items
+    .map(
+      (item, i) => `
+    <li class="flex items-center gap-3 py-2">
+      <input type="checkbox" ${item.coche ? 'checked' : ''} data-index="${i}" class="checkbox checkbox-sm checkbox-success cb-item" />
+      <span class="flex-1 text-sm ${item.coche ? 'line-through text-base-content/40' : ''}">${item.nom}</span>
+      <input type="text" value="${item.quantite}" data-index="${i}" class="input input-bordered input-xs w-24 text-xs text-right edit-qty-item" />
+      <button class="btn btn-ghost btn-xs text-error btn-remove-item" data-index="${i}">✕</button>
+    </li>
+  `
+    )
+    .join('');
+
+  bindModalListEvents();
+}
+
+function bindModalListEvents() {
+  document.querySelectorAll('#shopping-list .cb-item').forEach((cb) => {
+    cb.addEventListener('change', () => {
+      const i = parseInt(cb.dataset.index);
+      listeGeneree.items[i].coche = cb.checked;
+      const span = cb.closest('li').querySelector('span');
+      span.classList.toggle('line-through', cb.checked);
+      span.classList.toggle('text-base-content/40', cb.checked);
+    });
+  });
+
+  document.querySelectorAll('#shopping-list .edit-qty-item').forEach((input) => {
+    input.addEventListener('change', () => {
+      const i = parseInt(input.dataset.index);
+      listeGeneree.items[i].quantite = input.value.trim();
+    });
+  });
+
+  document.querySelectorAll('#shopping-list .btn-remove-item').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      listeGeneree.items.splice(parseInt(btn.dataset.index), 1);
+      refreshModalList();
+    });
+  });
+}
+
 export async function renderListeCourses() {
   const container = document.getElementById('liste-courses');
   const recettes = await getRecettes();
@@ -34,9 +80,30 @@ export async function renderListeCourses() {
       </div>
     </div>
 
-    <div id="liste-generee-container" class="${listeGeneree ? '' : 'hidden'}">
-      ${listeGeneree ? renderListeGeneree() : ''}
-    </div>
+    <!-- Modal liste generee -->
+    <dialog id="modal-liste" class="modal">
+      <div class="modal-box max-w-lg max-h-[90vh] overflow-y-auto">
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="font-bold text-lg mb-2">Liste de courses</h3>
+        <p id="modal-liste-recettes" class="text-sm text-base-content/50 italic mb-3"></p>
+
+        <ul class="flex flex-col divide-y divide-base-200" id="shopping-list"></ul>
+
+        <div class="flex gap-2 items-center mt-3">
+          <input type="text" id="add-item-nom" placeholder="Ingredient" class="input input-bordered input-sm flex-1" />
+          <input type="text" id="add-item-qty" placeholder="Quantite" class="input input-bordered input-sm flex-1" />
+          <button id="btn-add-item" class="btn btn-success btn-sm btn-square">+</button>
+        </div>
+
+        <div class="divider my-2"></div>
+
+        <input type="text" id="nom-liste" placeholder="Nom de la liste (par defaut: date du jour)" class="input input-bordered w-full mb-2" />
+        <button id="btn-save-list" class="btn btn-primary w-full">Enregistrer la liste</button>
+      </div>
+      <form method="dialog" class="modal-backdrop"><button>close</button></form>
+    </dialog>
   `;
 
   const btnGenerer = document.getElementById('btn-generer');
@@ -70,83 +137,22 @@ export async function renderListeCourses() {
         recettesNoms: selectedRecettes.map((r) => r.nom),
       };
 
-      renderListeCourses();
+      document.getElementById('modal-liste-recettes').textContent =
+        'Pour : ' + listeGeneree.recettesNoms.join(', ');
+      refreshModalList();
+      document.getElementById('modal-liste').showModal();
     });
   }
 
-  if (listeGeneree) {
-    attachListeEvents();
-  }
-}
-
-function renderListeGeneree() {
-  if (!listeGeneree) return '';
-
-  return `
-    <div class="card bg-base-100 shadow-sm">
-      <div class="card-body">
-        <h2 class="card-title">Liste de courses</h2>
-        <p class="text-sm text-base-content/50 italic mb-2">Pour : ${listeGeneree.recettesNoms.join(', ')}</p>
-
-        <ul class="flex flex-col divide-y divide-base-200" id="shopping-list">
-          ${listeGeneree.items
-            .map(
-              (item, i) => `
-            <li class="flex items-center gap-3 py-2">
-              <input type="checkbox" ${item.coche ? 'checked' : ''} data-index="${i}" class="checkbox checkbox-sm checkbox-success cb-item" />
-              <span class="flex-1 text-sm ${item.coche ? 'line-through text-base-content/40' : ''}">${item.nom}</span>
-              <input type="text" value="${item.quantite}" data-index="${i}" class="input input-bordered input-xs w-24 text-xs text-right edit-qty-item" />
-              <button class="btn btn-ghost btn-xs text-error btn-remove-item" data-index="${i}">✕</button>
-            </li>
-          `
-            )
-            .join('')}
-        </ul>
-
-        <div class="flex gap-2 items-center mt-3">
-          <input type="text" id="add-item-nom" placeholder="Ingredient" class="input input-bordered input-sm flex-1" />
-          <input type="text" id="add-item-qty" placeholder="Quantite" class="input input-bordered input-sm flex-1" />
-          <button id="btn-add-item" class="btn btn-success btn-sm btn-square">+</button>
-        </div>
-
-        <div class="divider my-2"></div>
-
-        <input type="text" id="nom-liste" placeholder="Nom de la liste (par defaut: date du jour)" class="input input-bordered w-full mb-2" />
-        <button id="btn-save-list" class="btn btn-primary w-full">Enregistrer la liste</button>
-      </div>
-    </div>
-  `;
-}
-
-function attachListeEvents() {
-  document.querySelectorAll('.cb-item').forEach((cb) => {
-    cb.addEventListener('change', () => {
-      const i = parseInt(cb.dataset.index);
-      listeGeneree.items[i].coche = cb.checked;
-      renderListeCourses();
-    });
-  });
-
-  document.querySelectorAll('.edit-qty-item').forEach((input) => {
-    input.addEventListener('change', () => {
-      const i = parseInt(input.dataset.index);
-      listeGeneree.items[i].quantite = input.value.trim();
-    });
-  });
-
-  document.querySelectorAll('.btn-remove-item').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      listeGeneree.items.splice(parseInt(btn.dataset.index), 1);
-      renderListeCourses();
-    });
-  });
-
+  // Add item in modal
   document.getElementById('btn-add-item').addEventListener('click', () => {
     const nom = document.getElementById('add-item-nom').value.trim();
     const qty = document.getElementById('add-item-qty').value.trim();
     if (nom && qty) {
       listeGeneree.items.push({ nom, quantite: qty, coche: false });
-      renderListeCourses();
+      document.getElementById('add-item-nom').value = '';
+      document.getElementById('add-item-qty').value = '';
+      refreshModalList();
     }
   });
 
@@ -159,6 +165,7 @@ function attachListeEvents() {
     });
   });
 
+  // Save list
   document.getElementById('btn-save-list').addEventListener('click', async () => {
     const nom = document.getElementById('nom-liste').value.trim();
 
@@ -169,7 +176,7 @@ function attachListeEvents() {
     });
 
     listeGeneree = null;
-    alert('Liste enregistree !');
+    document.getElementById('modal-liste').close();
 
     document.querySelectorAll('.tab').forEach((b) => b.classList.remove('tab-active'));
     document.querySelectorAll('.tab-content').forEach((c) => {
