@@ -1,7 +1,10 @@
 <?php
-// Load .env file
-$envPath = __DIR__ . '/../.env';
-if (file_exists($envPath)) {
+// Load .env file — cherche dans le dossier parent puis deux niveaux au-dessus (dist/api/ → public_html/)
+$envPath = null;
+foreach ([__DIR__ . '/../.env', __DIR__ . '/../../.env'] as $candidate) {
+    if (file_exists($candidate)) { $envPath = $candidate; break; }
+}
+if ($envPath !== null) {
     $lines = file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {
         if (str_starts_with(trim($line), '#')) continue;
