@@ -1,4 +1,5 @@
 import { getRecettes, ajouterRecette, supprimerRecette, modifierRecette } from './store.js';
+import { showToast, showConfirm } from './utils.js';
 
 let ingredientsTemp = [];
 let etapesTemp = [];
@@ -39,8 +40,6 @@ function renderTagsBadges(recette) {
   }
   return all.length > 0 ? `<div class="flex flex-wrap gap-1 mt-1">${all.join('')}</div>` : '';
 }
-
-// --- Only re-render dynamic parts inside the modal ---
 
 function refreshIngredientsList() {
   const el = document.getElementById('ingredients-list');
@@ -102,8 +101,6 @@ function refreshImagePreview() {
     ? `<img src="${imageBase64}" class="w-full h-40 object-cover rounded-lg mt-2" />`
     : '';
 }
-
-// --- Bind event helpers (only for dynamic parts) ---
 
 function bindRemoveButtons() {
   document.querySelectorAll('.btn-remove-temp').forEach((btn) => {
@@ -191,11 +188,31 @@ function closeModal() {
   if (modal) modal.close();
 }
 
-// --- Main render ---
-
 export async function renderRecettes() {
   const container = document.getElementById('recettes');
-  const recettes = await getRecettes();
+
+  container.innerHTML = `
+    <div class="bg-primary/10 border border-primary/20 rounded-xl p-4 mb-6 flex items-center justify-between">
+      <div class="flex flex-col gap-2">
+        <div class="skeleton h-5 w-36 rounded"></div>
+        <div class="skeleton h-4 w-52 rounded"></div>
+      </div>
+      <div class="skeleton h-8 w-20 rounded"></div>
+    </div>
+    <div class="skeleton h-6 w-32 mb-4 rounded"></div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+      ${Array(6).fill('<div class="skeleton h-48 rounded-xl"></div>').join('')}
+    </div>
+  `;
+
+  let recettes;
+  try {
+    recettes = await getRecettes();
+  } catch {
+    showToast('Impossible de charger les recettes.');
+    container.innerHTML = '<p class="text-center text-error italic py-8">Erreur de chargement.</p>';
+    return;
+  }
 
   container.innerHTML = `
     <!-- Banner CTA -->
@@ -297,18 +314,15 @@ export async function renderRecettes() {
     </dialog>
   `;
 
-  // --- Populate dynamic parts ---
   refreshTagsUI();
   refreshIngredientsList();
   refreshEtapesList();
   refreshImagePreview();
 
-  // --- Event listeners (bound once) ---
+  document.getElementById('modal-recette').addEventListener('close', resetForm);
 
-  // Open modal
   document.getElementById('btn-open-modal').addEventListener('click', openModal);
 
-  // Image
   document.getElementById('image-recette').addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -321,7 +335,6 @@ export async function renderRecettes() {
     }
   });
 
-  // Add ingredient
   document.getElementById('btn-add-ingredient').addEventListener('click', () => {
     const nomInput = document.getElementById('input-ingredient-nom');
     const qtyInput = document.getElementById('input-ingredient-qty');
@@ -345,7 +358,6 @@ export async function renderRecettes() {
     });
   });
 
-  // Add etape
   document.getElementById('btn-add-etape').addEventListener('click', () => {
     const input = document.getElementById('input-etape');
     const val = input.value.trim();
@@ -364,7 +376,6 @@ export async function renderRecettes() {
     }
   });
 
-  // Submit
   document.getElementById('form-recette').addEventListener('submit', async (e) => {
     e.preventDefault();
     const nom = document.getElementById('nom-recette').value.trim();
@@ -385,10 +396,15 @@ export async function renderRecettes() {
       etapes: [...etapesTemp],
     };
 
-    if (editingRecetteId) {
-      await modifierRecette(editingRecetteId, data);
-    } else {
-      await ajouterRecette(data);
+    try {
+      if (editingRecetteId) {
+        await modifierRecette(editingRecetteId, data);
+      } else {
+        await ajouterRecette(data);
+      }
+    } catch {
+      showToast("Erreur lors de l'enregistrement de la recette.");
+      return;
     }
 
     resetForm();
@@ -396,7 +412,6 @@ export async function renderRecettes() {
     renderRecettes();
   });
 
-  // Gallery card click -> detail modal
   document.querySelectorAll('.card-recette-view').forEach((card) => {
     card.addEventListener('click', () => {
       const id = parseInt(card.dataset.id);
@@ -439,8 +454,13 @@ export async function renderRecettes() {
       });
 
       document.querySelector('.btn-delete-from-detail').addEventListener('click', async () => {
-        if (confirm('Supprimer cette recette ?')) {
-          await supprimerRecette(id);
+        if (await showConfirm('Supprimer cette recette ?')) {
+          try {
+            await supprimerRecette(id);
+          } catch {
+            showToast('Erreur lors de la suppression.');
+            return;
+          }
           document.getElementById('modal-detail').close();
           renderRecettes();
         }

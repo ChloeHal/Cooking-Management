@@ -23,6 +23,19 @@ app.innerHTML = `
       <section id="liste-courses" class="tab-content hidden"></section>
       <section id="historique" class="tab-content hidden"></section>
     </div>
+
+    <div id="toast-container" class="toast toast-bottom toast-end z-[100]"></div>
+
+    <dialog id="modal-confirm" class="modal">
+      <div class="modal-box max-w-sm">
+        <p id="confirm-message" class="py-2 text-sm"></p>
+        <div class="modal-action mt-2">
+          <button id="confirm-cancel" class="btn btn-sm">Annuler</button>
+          <button id="confirm-ok" class="btn btn-error btn-sm">Supprimer</button>
+        </div>
+      </div>
+      <form method="dialog" class="modal-backdrop"><button>close</button></form>
+    </dialog>
   </div>
 `;
 

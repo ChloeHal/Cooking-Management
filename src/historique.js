@@ -1,8 +1,24 @@
 import { getListes, modifierListe, supprimerListe } from './store.js';
+import { showToast, showConfirm } from './utils.js';
 
 export async function renderHistorique() {
   const container = document.getElementById('historique');
-  const listes = await getListes();
+
+  container.innerHTML = `
+    <div class="skeleton h-6 w-56 mb-4 rounded"></div>
+    <div class="flex flex-col gap-3">
+      ${Array(3).fill('<div class="skeleton h-16 rounded-xl"></div>').join('')}
+    </div>
+  `;
+
+  let listes;
+  try {
+    listes = await getListes();
+  } catch {
+    showToast("Impossible de charger l'historique.");
+    container.innerHTML = '<p class="text-center text-error italic py-8">Erreur de chargement.</p>';
+    return;
+  }
 
   container.innerHTML = `
     <h2 class="text-xl font-bold mb-4">Historique des listes</h2>
@@ -85,11 +101,18 @@ function bindItemEvents(listeId, listes) {
       const liste = listes.find((l) => l.id === listeId);
       if (!liste) return;
       liste.items[index].coche = cb.checked;
-      // Update DOM in place
-      const span = cb.closest('li').querySelector('span');
+      const span = cb.closest('li').querySelector('span.flex-1');
       span.classList.toggle('line-through', cb.checked);
       span.classList.toggle('text-base-content/40', cb.checked);
-      await modifierListe(listeId, { items: liste.items });
+      try {
+        await modifierListe(listeId, { items: liste.items });
+      } catch {
+        showToast('Erreur lors de la sauvegarde.');
+        cb.checked = !cb.checked;
+        liste.items[index].coche = cb.checked;
+        span.classList.toggle('line-through', cb.checked);
+        span.classList.toggle('text-base-content/40', cb.checked);
+      }
     });
   });
 
@@ -99,27 +122,29 @@ function bindItemEvents(listeId, listes) {
       const index = parseInt(btn.dataset.index);
       const liste = listes.find((l) => l.id === listeId);
       if (!liste) return;
-      liste.items.splice(index, 1);
-      await modifierListe(listeId, { items: liste.items });
+      const removed = liste.items.splice(index, 1);
+      try {
+        await modifierListe(listeId, { items: liste.items });
+      } catch {
+        showToast('Erreur lors de la suppression.');
+        liste.items.splice(index, 0, ...removed);
+      }
       refreshItemsList(listeId, listes);
     });
   });
 }
 
 function bindAllEvents(listes) {
-  // Stop clicks inside collapse-content from toggling
   document.querySelectorAll('.collapse-content').forEach((content) => {
     content.addEventListener('click', (e) => {
       e.stopPropagation();
     });
   });
 
-  // Bind item events for each list
   listes.forEach((liste) => {
     bindItemEvents(liste.id, listes);
   });
 
-  // Add item
   document.querySelectorAll('.btn-add-hist-item').forEach((btn) => {
     btn.addEventListener('click', async (e) => {
       e.stopPropagation();
@@ -134,14 +159,18 @@ function bindAllEvents(listes) {
           liste.items.push({ nom, quantite: qty, coche: false });
           nomInput.value = '';
           qtyInput.value = '';
-          await modifierListe(listeId, { items: liste.items });
+          try {
+            await modifierListe(listeId, { items: liste.items });
+          } catch {
+            showToast("Erreur lors de l'ajout.");
+            liste.items.pop();
+          }
           refreshItemsList(listeId, listes);
         }
       }
     });
   });
 
-  // Enter key on add inputs
   document.querySelectorAll('.hist-add-nom, .hist-add-qty').forEach((input) => {
     input.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
@@ -153,7 +182,6 @@ function bindAllEvents(listes) {
     });
   });
 
-  // Rename (now inside collapse-content, no conflict with toggle)
   document.querySelectorAll('.btn-save-nom').forEach((btn) => {
     btn.addEventListener('click', async (e) => {
       e.stopPropagation();
@@ -161,10 +189,13 @@ function bindAllEvents(listes) {
       const input = document.querySelector(`.edit-nom-liste[data-id="${id}"]`);
       const newNom = input.value.trim();
       if (newNom) {
-        await modifierListe(id, { nom: newNom });
-        // Update title in place
-        const titleSpan = document.querySelector(`.liste-nom-display[data-id="${id}"]`);
-        if (titleSpan) titleSpan.textContent = newNom;
+        try {
+          await modifierListe(id, { nom: newNom });
+          const titleSpan = document.querySelector(`.liste-nom-display[data-id="${id}"]`);
+          if (titleSpan) titleSpan.textContent = newNom;
+        } catch {
+          showToast('Erreur lors du renommage.');
+        }
       }
     });
   });
@@ -179,12 +210,16 @@ function bindAllEvents(listes) {
     });
   });
 
-  // Delete
   document.querySelectorAll('.btn-delete-liste').forEach((btn) => {
     btn.addEventListener('click', async (e) => {
       e.stopPropagation();
-      if (confirm('Supprimer cette liste ?')) {
-        await supprimerListe(parseInt(btn.dataset.id));
+      if (await showConfirm('Supprimer cette liste ?')) {
+        try {
+          await supprimerListe(parseInt(btn.dataset.id));
+        } catch {
+          showToast('Erreur lors de la suppression.');
+          return;
+        }
         renderHistorique();
       }
     });

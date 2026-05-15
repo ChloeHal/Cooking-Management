@@ -1,7 +1,8 @@
 import { getRecettes, ajouterListe } from './store.js';
-import { refreshTab } from './main.js';
+import { showToast } from './utils.js';
 
 let listeGeneree = null;
+let dragIndex = null;
 
 function refreshModalList() {
   const list = document.getElementById('shopping-list');
@@ -10,7 +11,8 @@ function refreshModalList() {
   list.innerHTML = listeGeneree.items
     .map(
       (item, i) => `
-    <li class="flex items-center gap-3 py-2">
+    <li class="flex items-center gap-3 py-2 draggable-item" draggable="true" data-index="${i}">
+      <span class="cursor-grab active:cursor-grabbing text-base-content/30 drag-handle select-none touch-none">☰</span>
       <input type="checkbox" ${item.coche ? 'checked' : ''} data-index="${i}" class="checkbox checkbox-sm checkbox-success cb-item" />
       <span class="flex-1 text-sm ${item.coche ? 'line-through text-base-content/40' : ''}">${item.nom}</span>
       <input type="text" value="${item.quantite}" data-index="${i}" class="input input-bordered input-xs w-24 text-xs text-right edit-qty-item" />
@@ -21,6 +23,86 @@ function refreshModalList() {
     .join('');
 
   bindModalListEvents();
+  bindDragEvents(list, listeGeneree.items, refreshModalList);
+}
+
+function bindDragEvents(ul, items, refreshFn) {
+  ul.querySelectorAll('.draggable-item').forEach((li) => {
+    // Desktop drag
+    li.addEventListener('dragstart', (e) => {
+      dragIndex = parseInt(li.dataset.index);
+      li.classList.add('opacity-30');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+
+    li.addEventListener('dragend', () => {
+      li.classList.remove('opacity-30');
+      dragIndex = null;
+      ul.querySelectorAll('.draggable-item').forEach((el) => el.classList.remove('border-t-2', 'border-primary'));
+    });
+
+    li.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      if (!li.classList.contains('border-t-2')) {
+        ul.querySelectorAll('.draggable-item').forEach((el) => el.classList.remove('border-t-2', 'border-primary'));
+        li.classList.add('border-t-2', 'border-primary');
+      }
+    });
+
+    li.addEventListener('dragleave', (e) => {
+      if (!li.contains(e.relatedTarget)) {
+        li.classList.remove('border-t-2', 'border-primary');
+      }
+    });
+
+    li.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const dropIndex = parseInt(li.dataset.index);
+      if (dragIndex === null || dragIndex === dropIndex) return;
+      const [moved] = items.splice(dragIndex, 1);
+      items.splice(dropIndex, 0, moved);
+      refreshFn();
+    });
+
+    // Mobile touch drag — initiated from the handle only to preserve list scrolling
+    const handle = li.querySelector('.drag-handle');
+    if (handle) {
+      handle.addEventListener('touchstart', () => {
+        dragIndex = parseInt(li.dataset.index);
+        li.classList.add('opacity-30');
+
+        const onMove = (e) => {
+          e.preventDefault();
+          const touch = e.touches[0];
+          const over = document.elementFromPoint(touch.clientX, touch.clientY)?.closest('.draggable-item');
+          ul.querySelectorAll('.draggable-item').forEach((el) => el.classList.remove('border-t-2', 'border-primary'));
+          if (over) over.classList.add('border-t-2', 'border-primary');
+        };
+
+        const onEnd = (e) => {
+          li.classList.remove('opacity-30');
+          ul.querySelectorAll('.draggable-item').forEach((el) => el.classList.remove('border-t-2', 'border-primary'));
+          const touch = e.changedTouches[0];
+          const over = document.elementFromPoint(touch.clientX, touch.clientY)?.closest('.draggable-item');
+          if (over && dragIndex !== null) {
+            const dropIndex = parseInt(over.dataset.index);
+            if (dragIndex !== dropIndex) {
+              const [moved] = items.splice(dragIndex, 1);
+              items.splice(dropIndex, 0, moved);
+              refreshFn();
+            }
+          }
+          dragIndex = null;
+          document.removeEventListener('touchmove', onMove);
+          document.removeEventListener('touchend', onEnd);
+        };
+
+        document.addEventListener('touchmove', onMove, { passive: false });
+        document.addEventListener('touchend', onEnd);
+      }, { passive: true });
+    }
+  });
 }
 
 function bindModalListEvents() {
@@ -28,7 +110,7 @@ function bindModalListEvents() {
     cb.addEventListener('change', () => {
       const i = parseInt(cb.dataset.index);
       listeGeneree.items[i].coche = cb.checked;
-      const span = cb.closest('li').querySelector('span');
+      const span = cb.closest('li').querySelector('span:not(.drag-handle)');
       span.classList.toggle('line-through', cb.checked);
       span.classList.toggle('text-base-content/40', cb.checked);
     });
@@ -51,7 +133,25 @@ function bindModalListEvents() {
 
 export async function renderListeCourses() {
   const container = document.getElementById('liste-courses');
-  const recettes = await getRecettes();
+
+  container.innerHTML = `
+    <div class="card bg-base-100 shadow-sm mb-6">
+      <div class="card-body">
+        <div class="skeleton h-5 w-48 mb-4 rounded"></div>
+        ${Array(4).fill('<div class="skeleton h-12 rounded-lg mb-2"></div>').join('')}
+        <div class="skeleton h-10 rounded-lg mt-2"></div>
+      </div>
+    </div>
+  `;
+
+  let recettes;
+  try {
+    recettes = await getRecettes();
+  } catch {
+    showToast('Impossible de charger les recettes disponibles.');
+    container.innerHTML = '<p class="text-center text-error italic py-8">Erreur de chargement.</p>';
+    return;
+  }
 
   container.innerHTML = `
     <div class="card bg-base-100 shadow-sm mb-6">
@@ -144,8 +244,8 @@ export async function renderListeCourses() {
     });
   }
 
-  // Add item in modal
   document.getElementById('btn-add-item').addEventListener('click', () => {
+    if (!listeGeneree) return;
     const nom = document.getElementById('add-item-nom').value.trim();
     const qty = document.getElementById('add-item-qty').value.trim();
     if (nom && qty) {
@@ -165,28 +265,23 @@ export async function renderListeCourses() {
     });
   });
 
-  // Save list
   document.getElementById('btn-save-list').addEventListener('click', async () => {
     const nom = document.getElementById('nom-liste').value.trim();
 
-    await ajouterListe({
-      nom: nom || null,
-      items: listeGeneree.items.map((item) => ({ ...item })),
-      recettes: listeGeneree.recettesNoms,
-    });
+    try {
+      await ajouterListe({
+        nom: nom || null,
+        items: listeGeneree.items.map((item) => ({ ...item })),
+        recettes: listeGeneree.recettesNoms,
+      });
+    } catch {
+      showToast("Erreur lors de l'enregistrement de la liste.");
+      return;
+    }
 
     listeGeneree = null;
     document.getElementById('modal-liste').close();
 
-    document.querySelectorAll('.tab').forEach((b) => b.classList.remove('tab-active'));
-    document.querySelectorAll('.tab-content').forEach((c) => {
-      c.classList.add('hidden');
-      c.classList.remove('block');
-    });
-    document.querySelector('[data-tab="historique"]').classList.add('tab-active');
-    const hist = document.getElementById('historique');
-    hist.classList.remove('hidden');
-    hist.classList.add('block');
-    refreshTab('historique');
+    document.querySelector('[data-tab="historique"]').click();
   });
 }
