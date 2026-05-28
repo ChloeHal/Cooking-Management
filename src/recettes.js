@@ -6,6 +6,8 @@ let etapesTemp = [];
 let tagsTemp = { allergies: [], thematiques: [], repas: [] };
 let imageBase64 = null;
 let editingRecetteId = null;
+let allRecettes = [];
+let filterState = { include: [], exclude: [] };
 
 const TAG_OPTIONS = {
   allergies: ['Gluten', 'Lactose', 'Arachides', 'Fruits a coque', 'Oeufs', 'Soja', 'Poisson', 'Crustaces', 'Celeri', 'Moutarde', 'Sesame'],
@@ -39,6 +41,185 @@ function renderTagsBadges(recette) {
     (recette.tags.allergies || []).forEach((t) => all.push(`<span class="badge badge-error badge-xs">${t}</span>`));
   }
   return all.length > 0 ? `<div class="flex flex-wrap gap-1 mt-1">${all.join('')}</div>` : '';
+}
+
+function getFilteredRecettes() {
+  return allRecettes.filter((r) => {
+    const tags = [
+      ...(r.tags?.repas || []),
+      ...(r.tags?.thematiques || []),
+      ...(r.tags?.allergies || []),
+    ];
+    if (filterState.include.some((t) => !tags.includes(t))) return false;
+    if (filterState.exclude.some((t) => tags.includes(t))) return false;
+    return true;
+  });
+}
+
+function updateFilterBadge(badge) {
+  const tag = badge.dataset.tag;
+  const cat = badge.dataset.cat;
+  if (filterState.include.includes(tag)) {
+    badge.className = `filter-badge badge ${TAG_COLORS[cat]} badge-sm cursor-pointer select-none`;
+    badge.textContent = `${tag} ✓`;
+  } else if (filterState.exclude.includes(tag)) {
+    badge.className = 'filter-badge badge badge-error badge-sm cursor-pointer select-none line-through';
+    badge.textContent = `${tag} ✕`;
+  } else {
+    badge.className = 'filter-badge badge badge-ghost badge-sm cursor-pointer select-none';
+    badge.textContent = tag;
+  }
+}
+
+function renderFilterSection() {
+  const hasActive = filterState.include.length + filterState.exclude.length > 0;
+  return `
+    <div class="mb-4 rounded-xl bg-base-200/40 border border-base-300 p-3" id="filter-section">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-semibold uppercase tracking-wide text-base-content/40">Filtres</span>
+        <button id="btn-reset-filters" class="btn btn-ghost btn-xs text-xs h-auto min-h-0 py-0.5 px-2 text-base-content/40 transition-opacity ${hasActive ? '' : 'invisible'}">Effacer</button>
+      </div>
+      ${['repas', 'thematiques', 'allergies'].map((cat) => `
+        <div class="flex flex-wrap gap-1 mb-1 last:mb-0">
+          ${TAG_OPTIONS[cat].map((tag) => {
+            if (filterState.include.includes(tag)) {
+              return `<button class="filter-badge badge ${TAG_COLORS[cat]} badge-sm cursor-pointer select-none" data-tag="${tag}" data-cat="${cat}">${tag} ✓</button>`;
+            }
+            if (filterState.exclude.includes(tag)) {
+              return `<button class="filter-badge badge badge-error badge-sm cursor-pointer select-none line-through" data-tag="${tag}" data-cat="${cat}">${tag} ✕</button>`;
+            }
+            return `<button class="filter-badge badge badge-ghost badge-sm cursor-pointer select-none" data-tag="${tag}" data-cat="${cat}">${tag}</button>`;
+          }).join('')}
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderGrid() {
+  const wrapper = document.getElementById('recettes-grid-wrapper');
+  if (!wrapper) return;
+  const filtered = getFilteredRecettes();
+  if (filtered.length === 0) {
+    wrapper.innerHTML =
+      filterState.include.length + filterState.exclude.length > 0
+        ? '<p class="text-center text-base-content/40 italic py-8">Aucune recette ne correspond aux filtres.</p>'
+        : '<p class="text-center text-base-content/40 italic py-8">Aucune recette pour le moment.</p>';
+    return;
+  }
+  wrapper.innerHTML = `
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4" id="recettes-grid">
+      ${filtered
+        .map(
+          (r) => `
+        <div class="card bg-base-100 shadow-sm hover:shadow-md transition-shadow cursor-pointer card-recette-view" data-id="${r.id}">
+          <figure class="h-32 bg-base-200">
+            ${
+              r.image
+                ? `<img src="${r.image}" alt="${r.nom}" class="w-full h-full object-cover" />`
+                : `<div class="flex items-center justify-center w-full h-full text-3xl text-base-content/20">🍽</div>`
+            }
+          </figure>
+          <div class="card-body p-3">
+            <h3 class="card-title text-sm leading-tight">${r.nom}</h3>
+            ${renderTagsBadges(r)}
+          </div>
+        </div>
+      `
+        )
+        .join('')}
+    </div>
+  `;
+  bindCardEvents();
+}
+
+function bindFilterEvents() {
+  const section = document.getElementById('filter-section');
+  if (!section) return;
+  section.addEventListener('click', (e) => {
+    if (e.target.closest('#btn-reset-filters')) {
+      filterState = { include: [], exclude: [] };
+      section.outerHTML = renderFilterSection();
+      bindFilterEvents();
+      renderGrid();
+      return;
+    }
+    const badge = e.target.closest('.filter-badge');
+    if (!badge) return;
+    const tag = badge.dataset.tag;
+    if (filterState.include.includes(tag)) {
+      filterState.include = filterState.include.filter((t) => t !== tag);
+      filterState.exclude.push(tag);
+    } else if (filterState.exclude.includes(tag)) {
+      filterState.exclude = filterState.exclude.filter((t) => t !== tag);
+    } else {
+      filterState.include.push(tag);
+    }
+    updateFilterBadge(badge);
+    const resetBtn = document.getElementById('btn-reset-filters');
+    if (resetBtn) resetBtn.classList.toggle('invisible', filterState.include.length + filterState.exclude.length === 0);
+    renderGrid();
+  });
+}
+
+function bindCardEvents() {
+  document.querySelectorAll('.card-recette-view').forEach((card) => {
+    card.addEventListener('click', () => {
+      const id = parseInt(card.dataset.id);
+      const r = allRecettes.find((rec) => rec.id === id);
+      if (!r) return;
+
+      const detailContent = document.getElementById('detail-content');
+      detailContent.innerHTML = `
+        ${r.image ? `<img src="${r.image}" alt="${r.nom}" class="w-full h-48 object-cover rounded-lg mb-4" />` : ''}
+        <h3 class="text-xl font-bold mb-2">${r.nom}</h3>
+        ${renderTagsBadges(r)}
+        ${r.lien ? `<a href="${normalizeUrl(r.lien)}" target="_blank" rel="noopener" class="link link-primary text-sm block mt-2">${r.lien}</a>` : ''}
+
+        <p class="text-xs uppercase tracking-wide text-base-content/50 mt-4 mb-1">Ingredients</p>
+        <ul class="list-disc list-inside text-sm mb-2">
+          ${r.ingredients.map((ing) => `<li>${ing.quantite} de ${ing.nom}</li>`).join('')}
+        </ul>
+
+        ${
+          r.etapes.length > 0
+            ? `
+          <p class="text-xs uppercase tracking-wide text-base-content/50 mt-3 mb-1">Etapes</p>
+          <ol class="list-decimal list-inside text-sm">
+            ${r.etapes.map((e) => `<li class="mb-1">${e}</li>`).join('')}
+          </ol>
+        `
+            : ''
+        }
+
+        <div class="mt-4 flex gap-2">
+          <button class="btn btn-primary btn-sm btn-outline btn-edit-from-detail" data-id="${r.id}">Modifier</button>
+          <button class="btn btn-error btn-sm btn-outline btn-delete-from-detail" data-id="${r.id}">Supprimer</button>
+        </div>
+      `;
+
+      document.querySelector('.btn-edit-from-detail').addEventListener('click', () => {
+        document.getElementById('modal-detail').close();
+        fillFormForEdit(r);
+        openModal();
+      });
+
+      document.querySelector('.btn-delete-from-detail').addEventListener('click', async () => {
+        if (await showConfirm('Supprimer cette recette ?')) {
+          try {
+            await supprimerRecette(id);
+          } catch {
+            showToast('Erreur lors de la suppression.');
+            return;
+          }
+          document.getElementById('modal-detail').close();
+          renderRecettes();
+        }
+      });
+
+      document.getElementById('modal-detail').showModal();
+    });
+  });
 }
 
 function refreshIngredientsList() {
@@ -276,31 +457,8 @@ export async function renderRecettes() {
 
     <!-- Gallery -->
     <h2 class="text-xl font-bold mb-4">Mes recettes</h2>
-    ${
-      recettes.length === 0
-        ? '<p class="text-center text-base-content/40 italic py-8">Aucune recette pour le moment.</p>'
-        : `<div class="grid grid-cols-2 sm:grid-cols-3 gap-4" id="recettes-grid">
-          ${recettes
-            .map(
-              (r) => `
-            <div class="card bg-base-100 shadow-sm hover:shadow-md transition-shadow cursor-pointer card-recette-view" data-id="${r.id}">
-              <figure class="h-32 bg-base-200">
-                ${
-                  r.image
-                    ? `<img src="${r.image}" alt="${r.nom}" class="w-full h-full object-cover" />`
-                    : `<div class="flex items-center justify-center w-full h-full text-3xl text-base-content/20">🍽</div>`
-                }
-              </figure>
-              <div class="card-body p-3">
-                <h3 class="card-title text-sm leading-tight">${r.nom}</h3>
-                ${renderTagsBadges(r)}
-              </div>
-            </div>
-          `
-            )
-            .join('')}
-        </div>`
-    }
+    ${recettes.length > 0 ? renderFilterSection() : ''}
+    <div id="recettes-grid-wrapper"></div>
 
     <!-- Detail modal -->
     <dialog id="modal-detail" class="modal">
@@ -318,6 +476,9 @@ export async function renderRecettes() {
   refreshIngredientsList();
   refreshEtapesList();
   refreshImagePreview();
+  allRecettes = recettes;
+  renderGrid();
+  if (recettes.length > 0) bindFilterEvents();
 
   document.getElementById('modal-recette').addEventListener('close', resetForm);
 
@@ -412,61 +573,4 @@ export async function renderRecettes() {
     renderRecettes();
   });
 
-  document.querySelectorAll('.card-recette-view').forEach((card) => {
-    card.addEventListener('click', () => {
-      const id = parseInt(card.dataset.id);
-      const r = recettes.find((rec) => rec.id === id);
-      if (!r) return;
-
-      const detailContent = document.getElementById('detail-content');
-      detailContent.innerHTML = `
-        ${r.image ? `<img src="${r.image}" alt="${r.nom}" class="w-full h-48 object-cover rounded-lg mb-4" />` : ''}
-        <h3 class="text-xl font-bold mb-2">${r.nom}</h3>
-        ${renderTagsBadges(r)}
-        ${r.lien ? `<a href="${normalizeUrl(r.lien)}" target="_blank" rel="noopener" class="link link-primary text-sm block mt-2">${r.lien}</a>` : ''}
-
-        <p class="text-xs uppercase tracking-wide text-base-content/50 mt-4 mb-1">Ingredients</p>
-        <ul class="list-disc list-inside text-sm mb-2">
-          ${r.ingredients.map((ing) => `<li>${ing.quantite} de ${ing.nom}</li>`).join('')}
-        </ul>
-
-        ${
-          r.etapes.length > 0
-            ? `
-          <p class="text-xs uppercase tracking-wide text-base-content/50 mt-3 mb-1">Etapes</p>
-          <ol class="list-decimal list-inside text-sm">
-            ${r.etapes.map((e) => `<li class="mb-1">${e}</li>`).join('')}
-          </ol>
-        `
-            : ''
-        }
-
-        <div class="mt-4 flex gap-2">
-          <button class="btn btn-primary btn-sm btn-outline btn-edit-from-detail" data-id="${r.id}">Modifier</button>
-          <button class="btn btn-error btn-sm btn-outline btn-delete-from-detail" data-id="${r.id}">Supprimer</button>
-        </div>
-      `;
-
-      document.querySelector('.btn-edit-from-detail').addEventListener('click', () => {
-        document.getElementById('modal-detail').close();
-        fillFormForEdit(r);
-        openModal();
-      });
-
-      document.querySelector('.btn-delete-from-detail').addEventListener('click', async () => {
-        if (await showConfirm('Supprimer cette recette ?')) {
-          try {
-            await supprimerRecette(id);
-          } catch {
-            showToast('Erreur lors de la suppression.');
-            return;
-          }
-          document.getElementById('modal-detail').close();
-          renderRecettes();
-        }
-      });
-
-      document.getElementById('modal-detail').showModal();
-    });
-  });
 }
