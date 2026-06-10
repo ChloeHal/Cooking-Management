@@ -1,565 +1,568 @@
 INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
 VALUES (
-  'Potée de poulet aux légumes d''hiver',
-  'https://www.hellofresh.fr/recipes/potee-de-poulet-aux-legumes-dhiver-61af910e5d947d4b944307df',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/potee-de-poulet-aux-legumes-dhiver-61af910e-hero.jpg',
-  JSON_ARRAY('Lactose'),
-  JSON_ARRAY('HelloFresh', 'Français'),
+  'Linguine alla boscaiola & lardons',
+  'https://www.hellofresh.fr/recipes/linguine-alla-boscaiola-and-lardons-674ed87e40f14c95104a0462',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/linguine-alla-boscaiola-and-lardons-674ed87e-hero.jpg',
+  JSON_ARRAY('Gluten', 'Lactose'),
+  JSON_ARRAY('HelloFresh', 'Italien'),
   JSON_ARRAY('Diner'),
   JSON_ARRAY(
-    JSON_OBJECT('nom', 'Cuisses de poulet', 'quantite', '2 (env. 500 g)'),
-    JSON_OBJECT('nom', 'Pommes de terre', 'quantite', '300 g'),
-    JSON_OBJECT('nom', 'Carottes', 'quantite', '200 g'),
-    JSON_OBJECT('nom', 'Topinambour', 'quantite', '100 g'),
-    JSON_OBJECT('nom', 'Oignon', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Linguine', 'quantite', '160 g'),
+    JSON_OBJECT('nom', 'Lardons fumés', 'quantite', '150 g'),
+    JSON_OBJECT('nom', 'Champignons de Paris', 'quantite', '200 g'),
+    JSON_OBJECT('nom', 'Échalote', 'quantite', '1'),
     JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Romarin frais', 'quantite', '1 brin'),
-    JSON_OBJECT('nom', 'Thym séché', 'quantite', '½ sachet'),
-    JSON_OBJECT('nom', 'Cube de bouillon de volaille', 'quantite', '½'),
+    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '100 ml'),
+    JSON_OBJECT('nom', 'Pecorino râpé', 'quantite', '20 g'),
+    JSON_OBJECT('nom', 'Persil frais', 'quantite', '10 g'),
+    JSON_OBJECT('nom', 'Beurre', 'quantite', '10 g'),
     JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '1 cs')
   ),
   JSON_ARRAY(
-    'Épluchez et coupez les pommes de terre en morceaux de 2 cm. Pelez les carottes et les topinambours, coupez-les en rondelles. Émincez l''oignon et hachez l''ail.',
-    'Faites chauffer l''huile d''olive dans une grande cocotte à feu moyen-vif. Faites dorer les cuisses de poulet 2-3 min de chaque côté. Retirez et réservez.',
-    'Dans la même cocotte, faites revenir l''oignon et l''ail 2-3 min avec le ½ cube de bouillon émietté. Ajoutez les pommes de terre, les carottes, les topinambours, le romarin et le thym.',
-    'Remettez les cuisses de poulet sur les légumes. Couvrez à niveau avec de l''eau (env. 450 ml). Portez à ébullition, puis laissez mijoter à couvert à feu doux 35-40 min.',
-    'Retirez la viande et les légumes à l''aide d''une écumoire. Salez et poivrez. Disposez dans des assiettes creuses avec un peu de bouillon et servez.'
+    'Portez une grande casserole d''eau salée à ébullition. Cuisez les linguine 8-10 min. Réservez 1 louche d''eau de cuisson, puis égouttez.',
+    'Essuyez les champignons avec un torchon humide et émincez-les finement. Émincez l''échalote et hachez l''ail. Ciselez le persil.',
+    'Faites chauffer une grande poêle à feu vif sans matière grasse. Faites revenir les lardons 5-6 min jusqu''à dorure. Réservez sur du papier absorbant.',
+    'Dans la même poêle, ajoutez l''huile d''olive et faites sauter les champignons 3-4 min en remuant régulièrement. Ajoutez l''échalote et l''ail à feu moyen 1-2 min supplémentaire.',
+    'Ajoutez les pâtes, l''eau de cuisson réservée, les lardons et la crème. Mélangez et laissez réduire 3-4 min à feu vif. Hors du feu, incorporez le beurre, le persil et le pecorino. Salez, poivrez et servez.'
   )
 );
 
 INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
 VALUES (
-  'Cuisse de poulet & légumes au four',
-  'https://www.hellofresh.fr/recipes/cuisse-de-poulet-and-legumes-au-four-672253394251e0dbe4be9abb',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/cuisse-de-poulet-and-legumes-au-four-67225339-hero.jpg',
+  'Racliflette aux lardons & pommes de terre',
+  'https://www.hellofresh.fr/recipes/tartiflette-revisitee-au-fromage-a-raclette-68596705971405a9ee1f3112',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/tartiflette-revisitee-au-fromage-a-raclette-68596705-hero.jpg',
   JSON_ARRAY('Lactose'),
   JSON_ARRAY('HelloFresh', 'Français'),
   JSON_ARRAY('Diner'),
   JSON_ARRAY(
-    JSON_OBJECT('nom', 'Cuisses de poulet', 'quantite', '2 (env. 500 g)'),
-    JSON_OBJECT('nom', 'Pommes grenaille', 'quantite', '300 g'),
-    JSON_OBJECT('nom', 'Carottes', 'quantite', '2 (env. 200 g)'),
+    JSON_OBJECT('nom', 'Pommes de terre', 'quantite', '400 g'),
+    JSON_OBJECT('nom', 'Lardons fumés', 'quantite', '150 g'),
+    JSON_OBJECT('nom', 'Fromage à raclette', 'quantite', '120 g'),
     JSON_OBJECT('nom', 'Oignon', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '2'),
-    JSON_OBJECT('nom', 'Yaourt à la grecque', 'quantite', '100 g'),
-    JSON_OBJECT('nom', 'Citron', 'quantite', '½'),
-    JSON_OBJECT('nom', 'Persil frais', 'quantite', '5 g'),
+    JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '50 ml'),
+    JSON_OBJECT('nom', 'Vinaigre balsamique blanc', 'quantite', '1 cs'),
     JSON_OBJECT('nom', 'Thym séché', 'quantite', '½ sachet'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '2 cs')
+    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '1 cs')
   ),
   JSON_ARRAY(
-    'Préchauffez le four à 230 °C (210 °C chaleur tournante). Coupez les grenailles en deux. Pelez les carottes et coupez-les en bâtonnets de 1,5 cm. Coupez l''oignon en 8 quartiers.',
-    'Disposez les légumes sur une grande plaque de cuisson. Arrosez de 1 cs d''huile d''olive, salez, poivrez et mélangez.',
-    'Incisez chaque cuisse de poulet en 2-3 endroits. Badigeonnez de la cs d''huile restante, saupoudrez de thym, salez et poivrez. Posez peau vers le haut sur les légumes. Ajoutez 2 cs d''eau dans le plat.',
-    'Enfournez 35-50 min jusqu''à ce que le poulet soit bien doré et les légumes tendres. Retournez les légumes à mi-cuisson.',
-    'Préparez la sauce : mélangez le yaourt avec le jus du demi-citron, l''ail pressé et le persil ciselé. Salez et poivrez. Servez les cuisses avec les légumes et la sauce au yaourt.'
+    'Préchauffez le four à 220 °C (200 °C chaleur tournante). Épluchez les pommes de terre et coupez-les en rondelles de 5 mm. Faites-les cuire dans une casserole d''eau salée 7-10 min jusqu''à tendreté légère. Égouttez.',
+    'Émincez l''oignon et hachez l''ail. Coupez la moitié du fromage en tranches fines.',
+    'Faites chauffer l''huile d''olive dans une poêle à feu moyen-vif. Faites revenir les lardons, l''oignon et l''ail 3-5 min jusqu''à légère dorure.',
+    'Déglacez avec le vinaigre balsamique. Ajoutez la crème fraîche et le thym. Salez et poivrez. Mélangez bien.',
+    'Dans un plat allant au four légèrement huilé, disposez les pommes de terre et versez le mélange aux lardons. Répartissez les tranches de raclette sur le dessus. Enfournez 10-12 min jusqu''à ce que le fromage soit fondu et gratiné. Servez immédiatement.'
   )
 );
 
 INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
 VALUES (
-  'Poulet poêlé & sa sauce blanche aux herbes',
-  'https://www.hellofresh.fr/recipes/poulet-poele-and-sa-sauce-blanche-aux-herbes-686d1babfa13aea4b9887084',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/poulet-poele-and-sa-sauce-blanche-aux-herbes-686d1bab-hero.jpg',
+  'Filet de lieu & sauce aux herbes',
+  'https://www.hellofresh.fr/recipes/filet-de-lieu-and-sauce-aux-herbes-67093abed1dd98c148b058ed',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/filet-de-lieu-and-sauce-aux-herbes-67093abe-hero.jpg',
+  JSON_ARRAY('Poisson', 'Lactose'),
+  JSON_ARRAY('HelloFresh', 'Français'),
+  JSON_ARRAY('Diner'),
+  JSON_ARRAY(
+    JSON_OBJECT('nom', 'Filets de lieu noir', 'quantite', '2 (env. 280 g)'),
+    JSON_OBJECT('nom', 'Pommes de terre', 'quantite', '350 g'),
+    JSON_OBJECT('nom', 'Beurre', 'quantite', '40 g'),
+    JSON_OBJECT('nom', 'Échalote', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Persil frais', 'quantite', '10 g'),
+    JSON_OBJECT('nom', 'Ciboulette fraîche', 'quantite', '5 g'),
+    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '50 ml'),
+    JSON_OBJECT('nom', 'Citron', 'quantite', '½'),
+    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '1 cs')
+  ),
+  JSON_ARRAY(
+    'Épluchez les pommes de terre et coupez-les en dés de 2 cm. Portez une casserole d''eau salée à ébullition et faites-les cuire 12-15 min jusqu''à tendreté. Égouttez.',
+    'Émincez finement l''échalote. Ciselez le persil et la ciboulette.',
+    'Faites chauffer l''huile dans une poêle à feu moyen-vif. Salez et poivrez les filets de lieu. Faites-les dorer 3-4 min de chaque côté selon l''épaisseur. Réservez.',
+    'Dans la même poêle, faites fondre 20 g de beurre à feu doux. Faites revenir l''échalote 2 min. Ajoutez la crème fraîche, le jus de citron et laissez réduire 2-3 min. Incorporez les herbes, salez et poivrez.',
+    'Faites sauter les pommes de terre avec les 20 g de beurre restant à feu moyen 3-4 min jusqu''à légère dorure. Servez les filets de lieu nappés de sauce aux herbes avec les pommes de terre.'
+  )
+);
+
+INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
+VALUES (
+  'Gnocchi express lardons fumés & petits pois',
+  'https://www.hellofresh.fr/recipes/gnocchi-express-lardons-and-petits-pois-67d99ab8dffcefea9daafbec',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/gnocchi-express-lardons-and-petits-pois-67d99ab8-hero.jpg',
+  JSON_ARRAY('Gluten', 'Lactose', 'Moutarde'),
+  JSON_ARRAY('HelloFresh', 'Français'),
+  JSON_ARRAY('Diner'),
+  JSON_ARRAY(
+    JSON_OBJECT('nom', 'Gnocchi', 'quantite', '400 g'),
+    JSON_OBJECT('nom', 'Lardons fumés', 'quantite', '100 g'),
+    JSON_OBJECT('nom', 'Petits pois surgelés', 'quantite', '100 g'),
+    JSON_OBJECT('nom', 'Poireau', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '100 ml'),
+    JSON_OBJECT('nom', 'Fromage frais aux herbes', 'quantite', '50 g'),
+    JSON_OBJECT('nom', 'Moutarde à l''ancienne', 'quantite', '1 cc'),
+    JSON_OBJECT('nom', 'Origan séché', 'quantite', '½ sachet'),
+    JSON_OBJECT('nom', 'Beurre', 'quantite', '10 g')
+  ),
+  JSON_ARRAY(
+    'Rincez et émincez le poireau en fines rondelles. Hachez l''ail. Sortez les petits pois du congélateur.',
+    'Faites fondre le beurre dans une grande poêle à feu moyen-vif. Ajoutez les lardons, le poireau et l''ail. Faites revenir 2-3 min, puis ajoutez 2 cs d''eau par personne. Couvrez et cuisez 4-6 min jusqu''à ce que le poireau soit tendre.',
+    'Dans une autre poêle, faites chauffer un filet d''huile à feu moyen. Faites revenir les gnocchi 2-3 min en les retournant, puis couvrez 1-2 min supplémentaire.',
+    'Ajoutez les petits pois au mélange de poireau et faites chauffer 2 min. Versez la crème fraîche, le fromage frais, la moutarde et l''origan. Mélangez bien.',
+    'Ajoutez les gnocchi dans la sauce, salez, poivrez et mélangez 1-2 min à feu doux jusqu''à ce que la sauce soit homogène et crémeuse. Servez aussitôt.'
+  )
+);
+
+INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
+VALUES (
+  'Poulet parmigiana en sauce tomate',
+  'https://www.hellofresh.fr/recipes/poulet-parmigiana-en-sauce-tomate-6357c4e2480dc311ac0bbce5',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/poulet-parmigiana-en-sauce-tomate-6357c4e2-hero.jpg',
+  JSON_ARRAY('Gluten', 'Lactose', 'Oeufs'),
+  JSON_ARRAY('HelloFresh', 'Italien'),
+  JSON_ARRAY('Diner'),
+  JSON_ARRAY(
+    JSON_OBJECT('nom', 'Filets de poulet', 'quantite', '2 (env. 300 g)'),
+    JSON_OBJECT('nom', 'Spaghetti', 'quantite', '160 g'),
+    JSON_OBJECT('nom', 'Sauce tomate', 'quantite', '200 g'),
+    JSON_OBJECT('nom', 'Mozzarella', 'quantite', '125 g'),
+    JSON_OBJECT('nom', 'Parmesan râpé', 'quantite', '20 g'),
+    JSON_OBJECT('nom', 'Œuf', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Chapelure', 'quantite', '50 g'),
+    JSON_OBJECT('nom', 'Farine', 'quantite', '2 cs'),
+    JSON_OBJECT('nom', 'Basilic frais', 'quantite', '5 g'),
+    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '3 cs')
+  ),
+  JSON_ARRAY(
+    'Préchauffez le four à 200 °C (180 °C chaleur tournante). Portez une casserole d''eau salée à ébullition pour les spaghetti.',
+    'Aplatissez légèrement les filets de poulet entre deux feuilles de film alimentaire. Passez-les successivement dans la farine, l''œuf battu, puis la chapelure en appuyant bien.',
+    'Faites chauffer 2 cs d''huile dans une poêle allant au four à feu moyen-vif. Faites dorer les filets panés 2-3 min de chaque côté.',
+    'Nappez chaque filet de sauce tomate. Déposez des tranches de mozzarella et saupoudrez de parmesan. Enfournez 10-12 min jusqu''à ce que le fromage soit fondu et doré.',
+    'Cuisez les spaghetti selon les instructions, égouttez et arrosez de la cs d''huile restante. Servez le poulet parmigiana sur les pâtes, garni de basilic ciselé.'
+  )
+);
+
+INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
+VALUES (
+  'Pavé de saumon et risotto forestier',
+  'https://www.hellofresh.fr/recipes/pave-de-saumon-et-risotto-forestier-66f269e6c1f128a7425bbda0',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/pave-de-saumon-et-risotto-forestier-66f269e6-hero.jpg',
+  JSON_ARRAY('Poisson', 'Lactose'),
+  JSON_ARRAY('HelloFresh', 'Italien'),
+  JSON_ARRAY('Diner'),
+  JSON_ARRAY(
+    JSON_OBJECT('nom', 'Pavés de saumon', 'quantite', '2 (env. 280 g)'),
+    JSON_OBJECT('nom', 'Riz à risotto', 'quantite', '150 g'),
+    JSON_OBJECT('nom', 'Champignons de Paris', 'quantite', '200 g'),
+    JSON_OBJECT('nom', 'Échalote', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Gousses d''ail', 'quantite', '2'),
+    JSON_OBJECT('nom', 'Bouillon de légumes en poudre', 'quantite', '½ cc (dans 500 ml eau chaude)'),
+    JSON_OBJECT('nom', 'Parmesan râpé', 'quantite', '20 g'),
+    JSON_OBJECT('nom', 'Persil frais', 'quantite', '10 g'),
+    JSON_OBJECT('nom', 'Beurre', 'quantite', '20 g'),
+    JSON_OBJECT('nom', 'Citron', 'quantite', '½')
+  ),
+  JSON_ARRAY(
+    'Préparez le bouillon avec l''eau chaude. Émincez l''échalote. Essuyez les champignons et émincez-les. Hachez l''ail et le persil.',
+    'Faites chauffer un filet d''huile dans une casserole à feu moyen. Faites revenir l''échalote 1-2 min, ajoutez le riz et la moitié de l''ail. Faites nacrer 1 min en remuant.',
+    'Ajoutez le bouillon louche par louche en remuant régulièrement, en attendant l''absorption avant chaque ajout. Cuisez ainsi 18-20 min.',
+    'Dans une poêle, faites fondre 10 g de beurre à feu vif. Faites sauter les champignons 5-8 min jusqu''à évaporation. Ajoutez l''ail restant et le persil, cuisez 1-2 min. Intégrez les deux tiers des champignons dans le risotto avec le parmesan et les 10 g de beurre restant. Salez, poivrez.',
+    'Faites chauffer un filet d''huile à feu vif. Salez et poivrez les pavés de saumon. Faites-les dorer 2-3 min de chaque côté. Dressez le risotto, posez le saumon dessus, garnissez des champignons restants et servez avec des quartiers de citron.'
+  )
+);
+
+INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
+VALUES (
+  'Tourte au confit de canard & carottes',
+  'https://www.hellofresh.fr/recipes/tourte-au-confit-de-canard-and-carottes-64073c529c6d10cd16eab6c3',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/tourte-au-confit-de-canard-and-carottes-64073c52-hero.jpg',
+  JSON_ARRAY('Gluten', 'Oeufs', 'Moutarde'),
+  JSON_ARRAY('HelloFresh', 'Français'),
+  JSON_ARRAY('Diner'),
+  JSON_ARRAY(
+    JSON_OBJECT('nom', 'Cuisses de canard confites', 'quantite', '2 (env. 350 g)'),
+    JSON_OBJECT('nom', 'Pâte feuilletée', 'quantite', '1 rouleau'),
+    JSON_OBJECT('nom', 'Carottes', 'quantite', '2 (env. 200 g)'),
+    JSON_OBJECT('nom', 'Oignon', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Moutarde à l''ancienne', 'quantite', '1 cc'),
+    JSON_OBJECT('nom', 'Thym séché', 'quantite', '½ sachet'),
+    JSON_OBJECT('nom', 'Fond de veau en poudre', 'quantite', '½ cc'),
+    JSON_OBJECT('nom', 'Œuf', 'quantite', '1 (pour la dorure)')
+  ),
+  JSON_ARRAY(
+    'Préchauffez le four à 210 °C (190 °C chaleur tournante). Pelez les carottes et coupez-les en rondelles de 5 mm. Émincez l''oignon et hachez l''ail.',
+    'Placez les cuisses de canard dans un plat allant au four. Enfournez 15 min. Sortez, effilochez la viande et réservez 1 cs de graisse de canard.',
+    'Dans une poêle, faites revenir l''oignon et l''ail dans la graisse de canard 2-3 min. Ajoutez les carottes et le thym, cuisez 5 min. Diluez le fond de veau dans 100 ml d''eau chaude et versez dans la poêle. Laissez mijoter 10 min jusqu''à quasi-absorption.',
+    'Mélangez le canard effiloché aux légumes avec la moutarde. Assaisonnez. Répartissez dans un plat à four (env. 18x22 cm). Étalez la pâte feuilletée par-dessus et appuyez sur les bords pour souder. Badigeonnez d''œuf battu.',
+    'Enfournez 25-30 min jusqu''à ce que la pâte soit dorée et croustillante. Laissez reposer 5 min et servez chaud.'
+  )
+);
+
+INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
+VALUES (
+  'Filet mignon au lard & sauce forestière',
+  'https://www.hellofresh.fr/recipes/filet-mignon-au-lard-and-sauce-forestiere-5ffdbee95e2eea155c6b19ee',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/filet-mignon-au-lard-and-sauce-forestiere-5ffdbee9-hero.jpg',
   JSON_ARRAY('Lactose'),
+  JSON_ARRAY('HelloFresh', 'Français'),
+  JSON_ARRAY('Diner'),
+  JSON_ARRAY(
+    JSON_OBJECT('nom', 'Filet mignon de porc', 'quantite', '300 g (2 médaillons)'),
+    JSON_OBJECT('nom', 'Tranches de poitrine fumée', 'quantite', '6'),
+    JSON_OBJECT('nom', 'Pommes de terre', 'quantite', '400 g'),
+    JSON_OBJECT('nom', 'Champignons de Paris', 'quantite', '200 g'),
+    JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Persil frais', 'quantite', '10 g'),
+    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '100 ml'),
+    JSON_OBJECT('nom', 'Beurre', 'quantite', '20 g'),
+    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '1 cs')
+  ),
+  JSON_ARRAY(
+    'Préchauffez le four à 200 °C (180 °C chaleur tournante). Épluchez les pommes de terre, coupez-les en gros cubes. Portez à ébullition dans une casserole d''eau salée et cuisez 12-15 min. Égouttez.',
+    'Enroulez 3 tranches de poitrine fumée autour de chaque médaillon de filet mignon en serrant bien.',
+    'Faites fondre le beurre dans une poêle allant au four à feu moyen-vif. Faites dorer les médaillons 2-3 min de chaque côté, puis enfournez 8-10 min.',
+    'Essuyez les champignons et émincez-les. Hachez l''ail et le persil. Dans la même poêle, faites sauter les champignons et l''ail 4-5 min. Réduisez à feu doux, ajoutez la crème fraîche, laissez réduire 3-4 min. Incorporez le persil. Salez, poivrez.',
+    'Faites revenir les pommes de terre dans un filet d''huile 4-5 min jusqu''à légère dorure. Disposez les médaillons sur les pommes de terre et nappez de sauce forestière.'
+  )
+);
+
+INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
+VALUES (
+  'Gnocchi aux champignons & burrata',
+  'https://www.hellofresh.fr/recipes/gnocchi-aux-champignons-and-burrata-62d7e839dadd5d00cd0e2abe',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/gnocchi-aux-champignons-and-burrata-62d7e839-hero.jpg',
+  JSON_ARRAY('Gluten', 'Lactose'),
+  JSON_ARRAY('HelloFresh', 'Italien'),
+  JSON_ARRAY('Diner'),
+  JSON_ARRAY(
+    JSON_OBJECT('nom', 'Gnocchi', 'quantite', '400 g'),
+    JSON_OBJECT('nom', 'Champignons de Paris', 'quantite', '200 g'),
+    JSON_OBJECT('nom', 'Burrata', 'quantite', '1 (125 g)'),
+    JSON_OBJECT('nom', 'Gousses d''ail', 'quantite', '2'),
+    JSON_OBJECT('nom', 'Persil frais', 'quantite', '10 g'),
+    JSON_OBJECT('nom', 'Parmesan râpé', 'quantite', '20 g'),
+    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '3 cs')
+  ),
+  JSON_ARRAY(
+    'Essuyez les champignons avec un torchon humide et émincez-les finement. Hachez l''ail. Ciselez le persil.',
+    'Faites chauffer 2 cs d''huile dans une grande poêle à feu vif. Faites sauter les champignons 5-6 min jusqu''à ce qu''ils soient dorés et que toute l''eau soit évaporée. Ajoutez l''ail et le persil, cuisez 1 min. Réservez.',
+    'Dans la même poêle, faites chauffer la cs d''huile restante à feu moyen-vif. Faites dorer les gnocchi 2-3 min en les retournant régulièrement.',
+    'Remettez les champignons dans la poêle avec les gnocchi. Salez, poivrez et mélangez délicatement 1 min.',
+    'Répartissez dans les assiettes. Coupez la burrata en deux et déposez une moitié sur chaque assiette. Saupoudrez de parmesan et d''un filet d''huile d''olive. Servez immédiatement.'
+  )
+);
+
+INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
+VALUES (
+  'Orzo gourmand aux épinards',
+  'https://www.hellofresh.fr/recipes/orzo-gourmand-aux-epinards-63d9193b6da3b6459506c99e',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/orzo-gourmand-aux-epinards-63d9193b-hero.jpg',
+  JSON_ARRAY('Gluten', 'Lactose'),
+  JSON_ARRAY('HelloFresh', 'Italien'),
+  JSON_ARRAY('Diner'),
+  JSON_ARRAY(
+    JSON_OBJECT('nom', 'Orzo', 'quantite', '160 g'),
+    JSON_OBJECT('nom', 'Épinards frais', 'quantite', '150 g'),
+    JSON_OBJECT('nom', 'Échalote', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '100 ml'),
+    JSON_OBJECT('nom', 'Parmesan râpé', 'quantite', '30 g'),
+    JSON_OBJECT('nom', 'Beurre', 'quantite', '15 g'),
+    JSON_OBJECT('nom', 'Citron', 'quantite', '½'),
+    JSON_OBJECT('nom', 'Noix de muscade', 'quantite', '1 pincée')
+  ),
+  JSON_ARRAY(
+    'Portez une grande casserole d''eau salée à ébullition. Cuisez l''orzo 8-10 min selon les instructions. Réservez 1 louche d''eau de cuisson, puis égouttez.',
+    'Émincez finement l''échalote et hachez l''ail.',
+    'Faites fondre le beurre dans une grande poêle à feu moyen. Faites revenir l''échalote et l''ail 2-3 min. Ajoutez les épinards et laissez fondre 2-3 min en remuant.',
+    'Versez la crème fraîche et un peu d''eau de cuisson réservée. Laissez mijoter 2-3 min. Incorporez le parmesan, le jus de citron et la muscade. Salez, poivrez.',
+    'Ajoutez l''orzo égoutté dans la poêle. Mélangez bien et ajustez l''assaisonnement. Servez aussitôt avec un peu de parmesan supplémentaire si désiré.'
+  )
+);
+
+INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
+VALUES (
+  'Blanquette de poulet façon bouillon',
+  'https://www.hellofresh.fr/recipes/blanquette-de-poulet-reconfortante-676585649905c923d7fd5151',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/blanquette-de-poulet-reconfortante-67658564-hero.jpg',
+  JSON_ARRAY('Gluten', 'Lactose', 'Céleri'),
   JSON_ARRAY('HelloFresh', 'Français'),
   JSON_ARRAY('Diner'),
   JSON_ARRAY(
     JSON_OBJECT('nom', 'Filets de poulet', 'quantite', '2 (env. 300 g)'),
-    JSON_OBJECT('nom', 'Pommes de terre', 'quantite', '400 g'),
-    JSON_OBJECT('nom', 'Échalote', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Riz', 'quantite', '120 g'),
+    JSON_OBJECT('nom', 'Carotte', 'quantite', '1 (env. 150 g)'),
+    JSON_OBJECT('nom', 'Poireau', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Branche de céleri', 'quantite', '1'),
     JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '100 ml'),
-    JSON_OBJECT('nom', 'Persil frais', 'quantite', '10 g'),
-    JSON_OBJECT('nom', 'Ciboulette fraîche', 'quantite', '5 g'),
+    JSON_OBJECT('nom', 'Cube de bouillon de volaille', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Farine', 'quantite', '1 cs'),
     JSON_OBJECT('nom', 'Beurre', 'quantite', '20 g'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '2 cs')
-  ),
-  JSON_ARRAY(
-    'Épluchez les pommes de terre et coupez-les en dés de 2 cm. Portez une casserole d''eau salée à ébullition et faites cuire les pommes de terre 12-15 min jusqu''à tendreté. Égouttez.',
-    'Émincez l''échalote et hachez l''ail. Ciselez finement le persil et la ciboulette.',
-    'Faites chauffer l''huile dans une grande poêle à feu moyen-vif. Salez et poivrez les filets de poulet. Faites-les dorer 5-6 min de chaque côté. Réservez sous papier aluminium.',
-    'Dans la même poêle, faites fondre le beurre à feu moyen. Faites revenir l''échalote et l''ail 2 min. Versez la crème fraîche et laissez réduire 3-4 min en remuant. Incorporez le persil et la ciboulette. Salez et poivrez.',
-    'Faites sauter les pommes de terre dans un filet d''huile à la poêle 4-5 min jusqu''à légère dorure. Tranchez les filets de poulet et nappez de sauce blanche aux herbes. Servez avec les pommes de terre.'
-  )
-);
-
-INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
-VALUES (
-  'Filet de cabillaud sauce à la ciboulette',
-  'https://www.hellofresh.fr/recipes/filet-de-cabillaud-sauce-a-la-ciboulette-5bdc60c9ae08b57bcc7da1e2',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/filet-de-cabillaud-sauce-a-la-ciboulette-5bdc60c9-hero.jpg',
-  JSON_ARRAY('Poisson', 'Lactose', 'Moutarde'),
-  JSON_ARRAY('HelloFresh', 'Français'),
-  JSON_ARRAY('Diner'),
-  JSON_ARRAY(
-    JSON_OBJECT('nom', 'Filet de cabillaud', 'quantite', '2 (env. 280 g)'),
-    JSON_OBJECT('nom', 'Pommes de terre', 'quantite', '400 g'),
-    JSON_OBJECT('nom', 'Carottes', 'quantite', '200 g'),
-    JSON_OBJECT('nom', 'Yaourt entier', 'quantite', '100 g'),
-    JSON_OBJECT('nom', 'Moutarde à l''ancienne', 'quantite', '1 cc'),
-    JSON_OBJECT('nom', 'Ciboulette fraîche', 'quantite', '10 g'),
-    JSON_OBJECT('nom', 'Beurre', 'quantite', '20 g'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '1 cs')
-  ),
-  JSON_ARRAY(
-    'Épluchez les pommes de terre et les carottes. Coupez les pommes de terre en gros morceaux, les carottes en rondelles. Portez une grande casserole d''eau salée à ébullition.',
-    'Faites cuire les pommes de terre 15-18 min. Ajoutez les carottes après 5 min de cuisson. Égouttez et réservez au chaud.',
-    'Ciselez finement la ciboulette. Dans un bol, mélangez le yaourt entier, la moutarde à l''ancienne et la ciboulette. Salez et poivrez. Réservez au frais.',
-    'Épongez les filets de cabillaud avec du papier absorbant. Faites fondre le beurre dans une poêle à feu moyen-vif. Faites cuire le cabillaud 2-3 min de chaque côté jusqu''à dorure et cuisson à cœur.',
-    'Écrasez grossièrement les pommes de terre avec une noix de beurre. Servez les filets de cabillaud avec la purée grossière, les carottes et la sauce à la ciboulette à côté.'
-  )
-);
-
-INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
-VALUES (
-  'Cabillaud en papillote à la provençale',
-  'https://www.hellofresh.fr/recipes/cabillaud-en-papillote-a-la-provencale-64074022df6297bb5beef30c',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/cabillaud-en-papillote-a-la-provencale-64074022-hero.jpg',
-  JSON_ARRAY('Poisson', 'Moutarde'),
-  JSON_ARRAY('HelloFresh', 'Méditerranéen'),
-  JSON_ARRAY('Diner'),
-  JSON_ARRAY(
-    JSON_OBJECT('nom', 'Pavé de cabillaud', 'quantite', '2 (env. 280 g)'),
-    JSON_OBJECT('nom', 'Poivron rouge', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Oignon', 'quantite', '½'),
-    JSON_OBJECT('nom', 'Aïoli', 'quantite', '2 cs'),
-    JSON_OBJECT('nom', 'Citron', 'quantite', '½'),
-    JSON_OBJECT('nom', 'Thym séché', 'quantite', '½ sachet'),
-    JSON_OBJECT('nom', 'Laurier', 'quantite', '1 feuille'),
-    JSON_OBJECT('nom', 'Pommes grenaille', 'quantite', '300 g'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '2 cs')
-  ),
-  JSON_ARRAY(
-    'Préchauffez le four à 220 °C. Lavez les grenailles, coupez-les en deux et disposez-les sur une plaque. Arrosez d''huile d''olive, salez et poivrez. Enfournez 20-25 min.',
-    'Épépinez et coupez le poivron en dés de 1 cm. Émincez l''oignon en fines demi-lunes. Coupez le citron en tranches fines.',
-    'Dans un bol, mélangez l''aïoli avec 1 cc de thym séché. Réservez.',
-    'Découpez 2 rectangles de papier aluminium. Posez un pavé de cabillaud au centre de chacun. Répartissez le poivron et l''oignon. Ajoutez 1-2 tranches de citron, le reste du thym et la feuille de laurier. Salez, poivrez, arrosez de ½ cs d''huile. Fermez hermétiquement.',
-    'Posez les papillotes sur une plaque et enfournez 18-20 min. Ouvrez délicatement à la sortie du four. Servez le cabillaud avec les grenailles rôties et la sauce aïoli au thym.'
-  )
-);
-
-INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
-VALUES (
-  'Cassolette de cabillaud au poireau & à la crème',
-  'https://www.hellofresh.fr/recipes/cassolette-de-cabillaud-au-poireau-et-a-la-creme-5db849977a3a7a528073c970',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/cassolette-de-cabillaud-au-poireau-et-a-la-creme-5db84997-hero.jpg',
-  JSON_ARRAY('Poisson', 'Lactose'),
-  JSON_ARRAY('HelloFresh', 'Français'),
-  JSON_ARRAY('Diner'),
-  JSON_ARRAY(
-    JSON_OBJECT('nom', 'Filet de cabillaud', 'quantite', '2 (env. 280 g)'),
-    JSON_OBJECT('nom', 'Poireau', 'quantite', '1 (env. 150 g)'),
-    JSON_OBJECT('nom', 'Tomates cerises', 'quantite', '150 g'),
-    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '100 ml'),
-    JSON_OBJECT('nom', 'Emmental râpé', 'quantite', '40 g'),
-    JSON_OBJECT('nom', 'Pommes de terre', 'quantite', '400 g'),
-    JSON_OBJECT('nom', 'Beurre', 'quantite', '20 g'),
-    JSON_OBJECT('nom', 'Muscade moulue', 'quantite', '¼ cc'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '1 cs')
-  ),
-  JSON_ARRAY(
-    'Préchauffez le four à 180 °C. Épluchez les pommes de terre, coupez-les en morceaux. Faites cuire dans une casserole d''eau bouillante salée 12-15 min. Égouttez et réservez.',
-    'Émincez finement le poireau en rondelles. Faites fondre le beurre dans une poêle à feu moyen-vif. Faites revenir le poireau 4-6 min jusqu''à tendreté. Transférez dans un plat à gratin.',
-    'Coupez les tomates cerises en deux. Épongez et découpez les filets de cabillaud en gros morceaux. Disposez dans le plat avec les poireaux et les tomates.',
-    'Versez la crème fraîche sur le plat. Ajoutez la muscade, salez et poivrez. Parsemez d''emmental râpé. Enfournez 20-25 min jusqu''à gratinage doré.',
-    'Faites sauter les pommes de terre dans un filet d''huile à la poêle 5 min, salez et poivrez. Servez la cassolette bien chaude avec les pommes de terre sautées.'
-  )
-);
-
-INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
-VALUES (
-  'Cabillaud en croûte de lard & purée',
-  'https://www.hellofresh.fr/recipes/cabillaud-en-croute-de-lard-and-puree-64d3b22194a1cdbddda703d6',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/cabillaud-en-croute-de-lard-and-puree-64d3b221-hero.jpg',
-  JSON_ARRAY('Poisson', 'Lactose'),
-  JSON_ARRAY('HelloFresh', 'Français'),
-  JSON_ARRAY('Diner'),
-  JSON_ARRAY(
-    JSON_OBJECT('nom', 'Filet de cabillaud', 'quantite', '2 (env. 280 g)'),
-    JSON_OBJECT('nom', 'Poitrine fumée en tranches', 'quantite', '4 tranches'),
-    JSON_OBJECT('nom', 'Pommes de terre', 'quantite', '400 g'),
-    JSON_OBJECT('nom', 'Carottes', 'quantite', '2 (env. 200 g)'),
-    JSON_OBJECT('nom', 'Échalote', 'quantite', '1'),
     JSON_OBJECT('nom', 'Crème fraîche', 'quantite', '50 ml'),
-    JSON_OBJECT('nom', 'Beurre', 'quantite', '30 g'),
-    JSON_OBJECT('nom', 'Citron', 'quantite', '¼'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '1 cs')
+    JSON_OBJECT('nom', 'Persil frais', 'quantite', '10 g')
   ),
   JSON_ARRAY(
-    'Préchauffez le four à 190 °C. Épluchez et coupez les pommes de terre en petits dés de 1,5 cm. Pelez les carottes et coupez-les en longs bâtonnets.',
-    'Posez chaque filet de cabillaud sur 2 tranches de poitrine fumée et enveloppez-les soigneusement. Faites chauffer une poêle à feu moyen-vif et saisissez le poisson côté soudure vers le bas 5-6 min en retournant régulièrement, jusqu''à ce que la poitrine soit dorée.',
-    'Transférez dans un plat à four et enfournez 4-6 min. Faites cuire les carottes à la vapeur ou dans l''eau bouillante 8-10 min. Égouttez.',
-    'Faites cuire les pommes de terre dans de l''eau bouillante salée 12-15 min. Égouttez et écrasez avec le beurre et la crème fraîche. Salez et poivrez.',
-    'Émincez l''échalote. Dans la poêle, faites-la revenir dans une noix de beurre 1-2 min. Ajoutez quelques gouttes de jus de citron et la crème restante, remuez 1 min. Servez le cabillaud avec la purée, les carottes et la sauce.'
+    'Préparez le bouillon avec le cube et 700 ml d''eau chaude. Pelez la carotte et coupez-la en rondelles. Rincez le poireau et émincez-le en tronçons. Coupez le céleri en morceaux. Hachez l''ail.',
+    'Coupez les filets de poulet en gros morceaux. Dans une cocotte, faites chauffer un filet d''huile à feu moyen-vif. Faites revenir le poulet 3-4 min jusqu''à légère coloration.',
+    'Ajoutez les légumes et l''ail. Versez le bouillon à hauteur et portez à ébullition. Couvrez et laissez mijoter à feu doux 25-30 min.',
+    'Cuisez le riz dans une casserole d''eau salée 10-12 min. Égouttez et réservez au chaud.',
+    'Retirez poulet et légumes de la cocotte. Faites fondre le beurre dans la cocotte, ajoutez la farine et fouettez 1 min. Versez 300 ml du bouillon de cuisson et la crème fraîche. Fouettez et laissez épaissir 3-4 min. Remettez poulet et légumes, parsemez de persil et servez avec le riz.'
   )
 );
 
 INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
 VALUES (
-  'Lieu à la meunière & amandes torréfiées',
-  'https://www.hellofresh.fr/recipes/cabillaud-a-la-meuniere-sauce-beurre-and-capres-64fb2c7932e9107c6db88012',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/cabillaud-a-la-meuniere-sauce-beurre-and-capres-64fb2c79-hero.jpg',
-  JSON_ARRAY('Poisson', 'Lactose', 'Fruits à coque', 'Gluten'),
-  JSON_ARRAY('HelloFresh', 'Français'),
-  JSON_ARRAY('Diner'),
-  JSON_ARRAY(
-    JSON_OBJECT('nom', 'Filet de lieu jaune', 'quantite', '2 (env. 280 g)'),
-    JSON_OBJECT('nom', 'Amandes effilées', 'quantite', '20 g'),
-    JSON_OBJECT('nom', 'Broccolini', 'quantite', '200 g'),
-    JSON_OBJECT('nom', 'Pommes grenaille', 'quantite', '300 g'),
-    JSON_OBJECT('nom', 'Beurre', 'quantite', '40 g'),
-    JSON_OBJECT('nom', 'Farine', 'quantite', '2 cs'),
-    JSON_OBJECT('nom', 'Citron', 'quantite', '½'),
-    JSON_OBJECT('nom', 'Persil frais', 'quantite', '5 g'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '2 cs')
-  ),
-  JSON_ARRAY(
-    'Préchauffez le four à 200 °C. Lavez les grenailles, coupez-les en deux, placez sur une plaque avec l''huile, sel et poivre. Enfournez 20-25 min.',
-    'Faites torréfier les amandes effilées dans une petite poêle à sec à feu moyen 2-3 min jusqu''à légère dorure. Réservez.',
-    'Épongez les filets de lieu avec du papier absorbant. Farinez-les légèrement sur les deux faces. Faites fondre la moitié du beurre dans une grande poêle à feu moyen-vif. Faites cuire les filets 3-4 min de chaque côté jusqu''à belle dorure. Réservez au chaud.',
-    'Faites cuire les broccolini dans l''eau bouillante salée 3-4 min. Égouttez.',
-    'Dans la poêle, faites mousser le reste du beurre jusqu''à légère coloration noisette. Ajoutez le jus du demi-citron et le persil ciselé. Nappez les filets de ce beurre meunière et parsemez d''amandes torréfiées. Servez avec les grenailles et les broccolini.'
-  )
-);
-
-INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
-VALUES (
-  'Filet de merlu & sauce aux herbes',
-  'https://www.hellofresh.fr/recipes/filet-de-cabillaud-sauce-aux-herbes-626febf9bf005e372709558e',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/filet-de-cabillaud-sauce-aux-herbes-626febf9-hero.jpg',
-  JSON_ARRAY('Poisson', 'Lactose'),
-  JSON_ARRAY('HelloFresh', 'Français'),
-  JSON_ARRAY('Diner'),
-  JSON_ARRAY(
-    JSON_OBJECT('nom', 'Filet de merlu', 'quantite', '2 (env. 280 g)'),
-    JSON_OBJECT('nom', 'Couscous perlé', 'quantite', '150 g'),
-    JSON_OBJECT('nom', 'Courgette', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Tomates cerises', 'quantite', '150 g'),
-    JSON_OBJECT('nom', 'Beurre', 'quantite', '30 g'),
-    JSON_OBJECT('nom', 'Persil frais', 'quantite', '10 g'),
-    JSON_OBJECT('nom', 'Ciboulette fraîche', 'quantite', '5 g'),
-    JSON_OBJECT('nom', 'Citron', 'quantite', '½'),
-    JSON_OBJECT('nom', 'Cube de bouillon de légumes', 'quantite', '½'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '2 cs')
-  ),
-  JSON_ARRAY(
-    'Portez 300 ml d''eau à ébullition avec le bouillon de légumes émietté. Ajoutez le couscous perlé, couvrez et laissez cuire 10-12 min à feu doux. Égouttez si nécessaire et réservez.',
-    'Coupez la courgette en demi-lunes de 1 cm. Coupez les tomates cerises en deux. Faites chauffer 1 cs d''huile dans une sauteuse à feu moyen-vif. Faites revenir la courgette 4-5 min. Ajoutez les tomates, poursuivez 2-3 min. Salez et poivrez.',
-    'Épongez les filets de merlu. Faites fondre la moitié du beurre dans une grande poêle à feu moyen-vif. Faites cuire les filets 3-4 min de chaque côté jusqu''à dorure. Réservez.',
-    'Dans la même poêle à feu doux, faites fondre le reste du beurre. Ajoutez le jus de citron, le persil et la ciboulette ciselés. Remuez 1 min pour lier la sauce. Salez et poivrez.',
-    'Servez les filets de merlu sur le couscous perlé aux légumes, nappés de sauce aux herbes.'
-  )
-);
-
-INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
-VALUES (
-  'Merlu & sauce curcuma-citron façon bistrot',
-  'https://www.hellofresh.fr/recipes/merlu-and-sauce-curcuma-citron-facon-bistrot-64d28aae317ec2bf51928014',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/merlu-and-sauce-curcuma-citron-facon-bistrot-64d28aae-hero.jpg',
-  JSON_ARRAY('Poisson', 'Lactose'),
-  JSON_ARRAY('HelloFresh', 'Français'),
-  JSON_ARRAY('Diner'),
-  JSON_ARRAY(
-    JSON_OBJECT('nom', 'Filet de merlu', 'quantite', '2 (env. 280 g)'),
-    JSON_OBJECT('nom', 'Échalote', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '100 ml'),
-    JSON_OBJECT('nom', 'Curcuma moulu', 'quantite', '½ cc'),
-    JSON_OBJECT('nom', 'Citron', 'quantite', '½'),
-    JSON_OBJECT('nom', 'Pommes grenaille', 'quantite', '300 g'),
-    JSON_OBJECT('nom', 'Haricots verts', 'quantite', '200 g'),
-    JSON_OBJECT('nom', 'Beurre', 'quantite', '20 g'),
-    JSON_OBJECT('nom', 'Persil frais', 'quantite', '5 g'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '2 cs')
-  ),
-  JSON_ARRAY(
-    'Préchauffez le four à 200 °C. Coupez les grenailles en deux et placez-les sur une plaque avec 1 cs d''huile, sel et poivre. Enfournez 20-25 min.',
-    'Portez une casserole d''eau salée à ébullition. Faites cuire les haricots verts 5-6 min. Égouttez et réservez au chaud.',
-    'Émincez finement l''échalote. Faites-la revenir dans le beurre à feu moyen 2 min. Ajoutez le curcuma et mélangez 30 s. Versez la crème fraîche et le jus du demi-citron. Laissez réduire à feu doux 3-4 min en remuant. Salez et poivrez.',
-    'Épongez les filets de merlu. Faites chauffer la cs d''huile restante dans une grande poêle à feu moyen-vif. Faites cuire les filets 3-4 min de chaque côté jusqu''à belle dorure.',
-    'Dressez les filets de merlu dans les assiettes avec les grenailles et les haricots verts. Nappez de sauce curcuma-citron et parsemez de persil ciselé.'
-  )
-);
-
-INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
-VALUES (
-  'Gratin de pâtes à l''italienne',
-  'https://www.hellofresh.fr/recipes/gratin-de-pates-a-litalienne-64073c2c683721c9a32b07bd',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/gratin-de-pates-a-litalienne-64073c2c-hero.jpg',
-  JSON_ARRAY('Gluten', 'Lactose'),
+  'Escalope de dinde à la milanaise & spaghetti',
+  'https://www.hellofresh.fr/recipes/escalope-de-dinde-a-la-milanaise-and-spaghetti-61ddad8bcef6e7460138d1ef',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/escalope-de-dinde-a-la-milanaise-and-spaghetti-61ddad8b-hero.jpg',
+  JSON_ARRAY('Gluten', 'Lactose', 'Oeufs'),
   JSON_ARRAY('HelloFresh', 'Italien'),
   JSON_ARRAY('Diner'),
   JSON_ARRAY(
-    JSON_OBJECT('nom', 'Penne rigate', 'quantite', '180 g'),
-    JSON_OBJECT('nom', 'Chair de tomates', 'quantite', '200 g'),
-    JSON_OBJECT('nom', 'Oignon', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '2'),
-    JSON_OBJECT('nom', 'Mozzarella râpée', 'quantite', '80 g'),
-    JSON_OBJECT('nom', 'Parmesan râpé', 'quantite', '20 g'),
-    JSON_OBJECT('nom', 'Basilic frais', 'quantite', '5 g'),
-    JSON_OBJECT('nom', 'Épices italiennes', 'quantite', '1 sachet'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '2 cs')
-  ),
-  JSON_ARRAY(
-    'Préchauffez le four à 200 °C. Portez une grande casserole d''eau salée à ébullition. Faites cuire les penne 2-3 min de moins que le temps indiqué — elles finiront de cuire au four. Égouttez.',
-    'Émincez l''oignon et hachez l''ail. Faites chauffer l''huile dans une sauteuse à feu moyen. Faites revenir l''oignon 3-4 min jusqu''à translucidité. Ajoutez l''ail et les épices italiennes, mélangez 1 min.',
-    'Ajoutez la chair de tomates et 50 ml d''eau par personne. Laissez mijoter 8-10 min à feu moyen. Salez et poivrez. Incorporez les pâtes égouttées et mélangez bien.',
-    'Versez le mélange dans un plat à gratin. Parsemez de mozzarella et de parmesan. Enfournez 15-20 min jusqu''à ce que le dessus soit bien doré.',
-    'Sortez le gratin du four, parsemez de feuilles de basilic frais et servez immédiatement.'
-  )
-);
-
-INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
-VALUES (
-  'Gratin de pâtes aux lardons, champignons & oignons',
-  'https://www.hellofresh.fr/recipes/gratin-de-pates-aux-lardons-champignons-and-oignons-5f3bf07c9606e25ba1369ef2',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/gratin-de-pates-aux-lardons-champignons-and-oignons-5f3bf07c-hero.jpg',
-  JSON_ARRAY('Gluten', 'Lactose'),
-  JSON_ARRAY('HelloFresh', 'Comfort food'),
-  JSON_ARRAY('Diner'),
-  JSON_ARRAY(
-    JSON_OBJECT('nom', 'Fusilli', 'quantite', '180 g'),
-    JSON_OBJECT('nom', 'Lardons fumés', 'quantite', '100 g'),
-    JSON_OBJECT('nom', 'Champignons de Paris', 'quantite', '200 g'),
-    JSON_OBJECT('nom', 'Oignon', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '150 ml'),
-    JSON_OBJECT('nom', 'Emmental râpé', 'quantite', '60 g'),
-    JSON_OBJECT('nom', 'Persil frais', 'quantite', '5 g'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '1 cs')
-  ),
-  JSON_ARRAY(
-    'Préchauffez le four à 200 °C. Portez une grande casserole d''eau salée à ébullition. Faites cuire les fusilli 2 min de moins que le temps indiqué. Égouttez et réservez.',
-    'Émincez l''oignon. Nettoyez et émincez les champignons. Faites chauffer l''huile dans une sauteuse à feu moyen-vif. Faites revenir les lardons 3-4 min. Ajoutez l''oignon et les champignons, poursuivez 5-6 min. Salez et poivrez.',
-    'Versez la crème fraîche dans la sauteuse et mélangez bien. Incorporez les pâtes égouttées. Transférez dans un plat à gratin.',
-    'Parsemez d''emmental râpé. Enfournez 15-20 min jusqu''à gratinage bien doré.',
-    'Sortez du four, parsemez de persil ciselé et servez aussitôt.'
-  )
-);
-
-INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
-VALUES (
-  'Gratin de pâtes jambon-fromage',
-  'https://www.hellofresh.fr/recipes/gratin-de-pates-jambon-fromage-64fb2d5b786cce2df0e01638',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/gratin-de-pates-jambon-fromage-64fb2d5b-hero.jpg',
-  JSON_ARRAY('Gluten', 'Lactose', 'Moutarde'),
-  JSON_ARRAY('HelloFresh', 'Comfort food'),
-  JSON_ARRAY('Diner'),
-  JSON_ARRAY(
-    JSON_OBJECT('nom', 'Penne', 'quantite', '180 g'),
-    JSON_OBJECT('nom', 'Jambon cuit', 'quantite', '2 tranches (env. 100 g)'),
-    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '150 ml'),
-    JSON_OBJECT('nom', 'Cheddar râpé', 'quantite', '60 g'),
-    JSON_OBJECT('nom', 'Oignon', 'quantite', '½'),
-    JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Moutarde de Dijon', 'quantite', '1 cc'),
-    JSON_OBJECT('nom', 'Persil frais', 'quantite', '5 g'),
-    JSON_OBJECT('nom', 'Beurre', 'quantite', '10 g')
-  ),
-  JSON_ARRAY(
-    'Préchauffez le four à 200 °C. Portez une grande casserole d''eau salée à ébullition. Faites cuire les penne 2 min de moins que le temps indiqué. Égouttez.',
-    'Émincez l''oignon et hachez l''ail. Coupez le jambon en dés. Faites fondre le beurre dans une casserole à feu moyen. Faites revenir l''oignon et l''ail 3 min jusqu''à translucidité.',
-    'Ajoutez la crème fraîche et la moutarde. Faites chauffer 2-3 min en remuant. Poivrez et salez légèrement (le jambon est déjà salé).',
-    'Incorporez les pâtes et le jambon, mélangez bien. Versez dans un plat à gratin. Parsemez de cheddar râpé. Enfournez 15-20 min jusqu''à gratinage doré.',
-    'Sortez le gratin du four, parsemez de persil ciselé et servez bien chaud.'
-  )
-);
-
-INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
-VALUES (
-  'Gratin de pâtes au thon & tomates séchées',
-  'https://www.hellofresh.fr/recipes/gratin-de-pates-au-thon-and-tomates-sechees-612502f86b4d4d78850e0ed4',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/gratin-de-pates-au-thon-and-tomates-sechees-612502f8-hero.jpg',
-  JSON_ARRAY('Gluten', 'Lactose', 'Poisson'),
-  JSON_ARRAY('HelloFresh', 'Méditerranéen'),
-  JSON_ARRAY('Diner'),
-  JSON_ARRAY(
-    JSON_OBJECT('nom', 'Rigatoni', 'quantite', '180 g'),
-    JSON_OBJECT('nom', 'Thon à l''huile', 'quantite', '1 boîte (env. 140 g égoutté)'),
-    JSON_OBJECT('nom', 'Tomates séchées', 'quantite', '30 g'),
-    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '100 ml'),
-    JSON_OBJECT('nom', 'Emmental râpé', 'quantite', '60 g'),
-    JSON_OBJECT('nom', 'Oignon', 'quantite', '½'),
-    JSON_OBJECT('nom', 'Câpres', 'quantite', '1 cs'),
-    JSON_OBJECT('nom', 'Basilic frais', 'quantite', '5 g'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '1 cs')
-  ),
-  JSON_ARRAY(
-    'Préchauffez le four à 200 °C. Portez une grande casserole d''eau salée à ébullition. Faites cuire les rigatoni 2 min de moins que le temps indiqué. Égouttez.',
-    'Émincez l''oignon. Coupez les tomates séchées en lanières. Égouttez le thon. Faites chauffer l''huile dans une sauteuse à feu moyen. Faites revenir l''oignon 3-4 min.',
-    'Ajoutez la crème fraîche, les tomates séchées et les câpres. Faites chauffer 2-3 min en remuant. Incorporez le thon émietté et les pâtes. Mélangez délicatement. Salez et poivrez.',
-    'Versez dans un plat à gratin. Parsemez d''emmental râpé. Enfournez 15-20 min jusqu''à gratinage bien doré.',
-    'Sortez du four, parsemez de feuilles de basilic frais et servez immédiatement.'
-  )
-);
-
-INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
-VALUES (
-  'Risotto al forno : lardons, tomate & fromage',
-  'https://www.hellofresh.fr/recipes/risotto-al-forno-lardons-tomate-and-fromage-64fb2dbb71b62ce1283424e6',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/risotto-al-forno-lardons-tomate-and-fromage-64fb2dbb-hero.jpg',
-  JSON_ARRAY('Lactose'),
-  JSON_ARRAY('HelloFresh', 'Italien'),
-  JSON_ARRAY('Diner'),
-  JSON_ARRAY(
-    JSON_OBJECT('nom', 'Riz arborio', 'quantite', '160 g'),
-    JSON_OBJECT('nom', 'Lardons fumés', 'quantite', '100 g'),
-    JSON_OBJECT('nom', 'Tomates cerises', 'quantite', '200 g'),
-    JSON_OBJECT('nom', 'Pesto rosso', 'quantite', '2 cs'),
-    JSON_OBJECT('nom', 'Mozzarella râpée', 'quantite', '60 g'),
-    JSON_OBJECT('nom', 'Parmesan râpé', 'quantite', '20 g'),
-    JSON_OBJECT('nom', 'Oignon', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Cube de bouillon de légumes', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '2 cs')
-  ),
-  JSON_ARRAY(
-    'Préchauffez le four à 200 °C. Portez 600 ml d''eau à ébullition avec le cube de bouillon émietté. Émincez l''oignon.',
-    'Faites chauffer l''huile dans une cocotte allant au four à feu moyen-vif. Faites revenir les lardons 3-4 min. Ajoutez l''oignon et faites revenir 3 min. Ajoutez le riz arborio et faites-le nacrer 1-2 min en remuant constamment.',
-    'Coupez les tomates cerises en deux. Versez les 2/3 du bouillon chaud dans la cocotte, ajoutez les tomates et le pesto rosso. Mélangez et versez le reste du bouillon. Salez légèrement et poivrez.',
-    'Parsemez de mozzarella et de parmesan. Couvrez la cocotte et enfournez 20-25 min jusqu''à ce que le riz soit cuit et le liquide absorbé.',
-    'Retirez le couvercle et faites gratiner 5 min sous le grill. Servez directement depuis la cocotte.'
-  )
-);
-
-INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
-VALUES (
-  'Cabillaud pané & sauce ravigote',
-  'https://www.hellofresh.fr/recipes/merlu-pane-and-sauce-ravigote-666857cec42deafdb5a347b0',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/merlu-pane-and-sauce-ravigote-666857ce-hero.jpg',
-  JSON_ARRAY('Poisson', 'Gluten', 'Oeufs', 'Moutarde'),
-  JSON_ARRAY('HelloFresh', 'Français'),
-  JSON_ARRAY('Diner'),
-  JSON_ARRAY(
-    JSON_OBJECT('nom', 'Filet de cabillaud', 'quantite', '2 (env. 280 g)'),
-    JSON_OBJECT('nom', 'Chapelure panko', 'quantite', '40 g'),
+    JSON_OBJECT('nom', 'Escalopes de dinde', 'quantite', '2 (env. 300 g)'),
+    JSON_OBJECT('nom', 'Spaghetti', 'quantite', '160 g'),
+    JSON_OBJECT('nom', 'Chapelure', 'quantite', '50 g'),
+    JSON_OBJECT('nom', 'Parmesan râpé', 'quantite', '30 g'),
     JSON_OBJECT('nom', 'Œuf', 'quantite', '1'),
     JSON_OBJECT('nom', 'Farine', 'quantite', '2 cs'),
-    JSON_OBJECT('nom', 'Sauce ravigote', 'quantite', '2 cs'),
-    JSON_OBJECT('nom', 'Pommes grenaille', 'quantite', '300 g'),
-    JSON_OBJECT('nom', 'Haricots verts', 'quantite', '200 g'),
-    JSON_OBJECT('nom', 'Citron', 'quantite', '½'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '2 cs')
-  ),
-  JSON_ARRAY(
-    'Préchauffez le four à 200 °C. Coupez les grenailles en deux et placez-les sur une plaque avec 1 cs d''huile, sel et poivre. Enfournez 20-25 min.',
-    'Préparez la panure : mettez la farine dans un plat, battez l''œuf dans un deuxième, versez le panko dans un troisième. Épongez les filets de cabillaud et passez-les successivement dans la farine, l''œuf battu, puis le panko. Pressez bien pour que la chapelure adhère. Salez et poivrez.',
-    'Faites chauffer la cs d''huile restante dans une grande poêle à feu moyen-vif. Faites cuire les filets panés 3-4 min de chaque côté jusqu''à belle dorure croustillante. Égouttez sur du papier absorbant.',
-    'Faites cuire les haricots verts dans l''eau bouillante salée 5-6 min. Égouttez.',
-    'Servez les filets de cabillaud panés avec les grenailles rôties et les haricots verts. Disposez la sauce ravigote à côté et ajoutez quelques gouttes de citron sur le poisson.'
-  )
-);
-
-INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
-VALUES (
-  'Paupiette de veau & jus de viande à l''oignon',
-  'https://www.hellofresh.fr/recipes/paupiette-de-veau-sauce-a-loignon-64fb2d0171b62ce128341fd5',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/paupiette-de-veau-sauce-a-loignon-64fb2d01-hero.jpg',
-  JSON_ARRAY('Gluten', 'Lactose'),
-  JSON_ARRAY('HelloFresh', 'Français'),
-  JSON_ARRAY('Diner'),
-  JSON_ARRAY(
-    JSON_OBJECT('nom', 'Paupiettes de veau', 'quantite', '4 (env. 400 g)'),
-    JSON_OBJECT('nom', 'Oignons', 'quantite', '2'),
-    JSON_OBJECT('nom', 'Carottes', 'quantite', '2'),
-    JSON_OBJECT('nom', 'Vin blanc sec', 'quantite', '100 ml'),
-    JSON_OBJECT('nom', 'Cube de bouillon de bœuf', 'quantite', '½'),
-    JSON_OBJECT('nom', 'Beurre', 'quantite', '20 g'),
-    JSON_OBJECT('nom', 'Thym séché', 'quantite', '½ sachet'),
-    JSON_OBJECT('nom', 'Laurier', 'quantite', '1 feuille'),
-    JSON_OBJECT('nom', 'Tagliatelle', 'quantite', '180 g'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '1 cs')
-  ),
-  JSON_ARRAY(
-    'Émincez les oignons en fines rondelles. Pelez les carottes et coupez-les en rondelles de 1 cm.',
-    'Faites chauffer le beurre et l''huile dans une cocotte à feu moyen-vif. Faites dorer les paupiettes sur toutes les faces, 5-6 min au total. Réservez.',
-    'Dans la même cocotte, faites revenir les oignons à feu moyen 5-7 min jusqu''à belle dorure. Ajoutez les carottes, le thym et le laurier. Mélangez 1-2 min.',
-    'Remettez les paupiettes dans la cocotte. Versez le vin blanc et laissez réduire 2 min. Émiettez le cube de bouillon dans 150 ml d''eau chaude, versez sur les paupiettes. Laissez mijoter à couvert à feu doux 25-30 min.',
-    'Portez une grande casserole d''eau salée à ébullition et faites cuire les tagliatelle selon les instructions. Égouttez. Servez les paupiettes et les légumes dans leur jus avec les tagliatelle.'
-  )
-);
-
-INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
-VALUES (
-  'Paupiette de veau & sauce moutarde crémeuse',
-  'https://www.hellofresh.fr/recipes/paupiette-de-veau-sauce-facon-blanquette-6716528d2afd696502eddf90',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/paupiette-de-veau-sauce-facon-blanquette-6716528d-hero.jpg',
-  JSON_ARRAY('Lactose', 'Moutarde'),
-  JSON_ARRAY('HelloFresh', 'Français'),
-  JSON_ARRAY('Diner'),
-  JSON_ARRAY(
-    JSON_OBJECT('nom', 'Paupiettes de veau', 'quantite', '4 (env. 400 g)'),
-    JSON_OBJECT('nom', 'Échalotes', 'quantite', '2'),
-    JSON_OBJECT('nom', 'Champignons de Paris', 'quantite', '150 g'),
-    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '150 ml'),
-    JSON_OBJECT('nom', 'Moutarde de Dijon', 'quantite', '2 cc'),
-    JSON_OBJECT('nom', 'Vin blanc sec', 'quantite', '100 ml'),
-    JSON_OBJECT('nom', 'Cube de bouillon de volaille', 'quantite', '½'),
-    JSON_OBJECT('nom', 'Pommes de terre', 'quantite', '400 g'),
-    JSON_OBJECT('nom', 'Beurre', 'quantite', '20 g'),
-    JSON_OBJECT('nom', 'Persil frais', 'quantite', '5 g'),
-    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '1 cs')
-  ),
-  JSON_ARRAY(
-    'Épluchez et coupez les pommes de terre en morceaux. Faites-les cuire dans une casserole d''eau bouillante salée 15 min. Égouttez et écrasez avec une noix de beurre. Salez et poivrez.',
-    'Émincez les échalotes. Nettoyez et émincez les champignons. Faites chauffer l''huile et le beurre dans une cocotte à feu moyen-vif. Faites dorer les paupiettes sur toutes les faces 5-6 min. Réservez.',
-    'Dans la cocotte, faites revenir les échalotes 3 min. Ajoutez les champignons et poursuivez 4-5 min. Versez le vin blanc, laissez réduire 2 min.',
-    'Émiettez le cube de bouillon dans 100 ml d''eau chaude et versez dans la cocotte. Remettez les paupiettes. Laissez mijoter à couvert à feu doux 20-25 min.',
-    'Retirez les paupiettes. Ajoutez la crème fraîche et la moutarde dans le jus de cuisson. Remuez à feu moyen 3-4 min jusqu''à légère épaisseur. Remettez les paupiettes, parsemez de persil ciselé. Servez avec la purée.'
-  )
-);
-
-INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
-VALUES (
-  'Cuisse de poulet rôtie à la méditerranéenne',
-  'https://www.hellofresh.fr/recipes/cuisse-de-poulet-rotie-a-la-mediterraneenne-64073d82df6297bb5beef22f',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/cuisse-de-poulet-rotie-a-la-mediterraneenne-64073d82-hero.jpg',
-  JSON_ARRAY('Lactose'),
-  JSON_ARRAY('HelloFresh', 'Méditerranéen'),
-  JSON_ARRAY('Diner'),
-  JSON_ARRAY(
-    JSON_OBJECT('nom', 'Cuisses de poulet', 'quantite', '2 (env. 500 g)'),
-    JSON_OBJECT('nom', 'Poivron rouge', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Courgette', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Tomates cerises', 'quantite', '150 g'),
-    JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '2'),
-    JSON_OBJECT('nom', 'Herbes de Provence', 'quantite', '1 sachet'),
-    JSON_OBJECT('nom', 'Fromage grec', 'quantite', '60 g'),
+    JSON_OBJECT('nom', 'Sauce tomate', 'quantite', '150 g'),
+    JSON_OBJECT('nom', 'Basilic frais', 'quantite', '5 g'),
     JSON_OBJECT('nom', 'Citron', 'quantite', '½'),
     JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '3 cs')
   ),
   JSON_ARRAY(
-    'Préchauffez le four à 220 °C. Coupez le poivron en dés de 2 cm. Coupez la courgette en demi-rondelles. Coupez les tomates cerises en deux. Pelez et hachez finement l''ail.',
-    'Mélangez les légumes et l''ail dans un grand plat allant au four. Arrosez de 2 cs d''huile d''olive, saupoudrez de la moitié des herbes de Provence, salez et poivrez.',
-    'Badigeonnez les cuisses de poulet avec la cs d''huile restante. Saupoudrez du reste des herbes de Provence, salez et poivrez. Posez-les peau vers le haut sur les légumes.',
-    'Enfournez 40-45 min jusqu''à ce que le poulet soit bien doré et la chair no longer rose. Remuez les légumes à mi-cuisson.',
-    'Mélangez le fromage grec avec le jus du demi-citron, salez et poivrez. Servez les cuisses de poulet sur les légumes méditerranéens avec la sauce au fromage grec.'
+    'Portez une grande casserole d''eau salée à ébullition pour les spaghetti. Mélangez la chapelure avec la moitié du parmesan dans une assiette creuse. Battez l''œuf dans une autre assiette.',
+    'Passez les escalopes dans la farine, puis dans l''œuf battu, puis dans le mélange chapelure-parmesan en appuyant bien des deux côtés.',
+    'Cuisez les spaghetti 9-11 min selon les instructions. Égouttez et arrosez d''un filet d''huile.',
+    'Faites chauffer 2 cs d''huile dans une grande poêle à feu moyen-vif. Faites dorer les escalopes panées 3-4 min de chaque côté jusqu''à belle dorure. Égouttez sur du papier absorbant.',
+    'Faites chauffer la sauce tomate dans une petite casserole. Servez les escalopes sur les spaghetti, nappez de sauce tomate, saupoudrez du parmesan restant et garnissez de basilic ciselé et d''un filet de jus de citron.'
   )
 );
 
 INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
 VALUES (
-  'Poulet, poêlée de légumes & lardons',
-  'https://www.hellofresh.fr/recipes/poulet-and-poelee-de-legumes-a-la-forestiere-6728f5e312c55222c8cc73ef',
-  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/poulet-and-poelee-de-legumes-a-la-forestiere-6728f5e3-hero.jpg',
+  'Escalope de dinde panée & sa ratatouille',
+  'https://www.hellofresh.fr/recipes/escalope-de-dinde-panee-and-sa-ratatouille-681082ea80e0f84c774ce91e',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/escalope-de-dinde-panee-and-sa-ratatouille-681082ea-hero.jpg',
+  JSON_ARRAY('Gluten', 'Oeufs'),
+  JSON_ARRAY('HelloFresh', 'Méditerranéen'),
+  JSON_ARRAY('Diner'),
+  JSON_ARRAY(
+    JSON_OBJECT('nom', 'Escalopes de dinde', 'quantite', '2 (env. 300 g)'),
+    JSON_OBJECT('nom', 'Courgette', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Poivron rouge', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Tomates', 'quantite', '2'),
+    JSON_OBJECT('nom', 'Oignon', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Thym séché', 'quantite', '½ sachet'),
+    JSON_OBJECT('nom', 'Chapelure panko', 'quantite', '50 g'),
+    JSON_OBJECT('nom', 'Œuf', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Farine', 'quantite', '2 cs'),
+    JSON_OBJECT('nom', 'Riz', 'quantite', '120 g'),
+    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '3 cs')
+  ),
+  JSON_ARRAY(
+    'Épépinez et coupez le poivron en dés de 1,5 cm. Coupez la courgette en dés. Épépinez et coupez les tomates. Émincez l''oignon et hachez l''ail.',
+    'Faites chauffer 1 cs d''huile dans une casserole à feu moyen-vif. Faites revenir l''oignon et le poivron 3-5 min. Ajoutez la courgette, l''ail et le thym. Cuisez 4 min. Ajoutez les tomates, salez, poivrez et laissez mijoter 15 min à feu doux.',
+    'Cuisez le riz dans de l''eau bouillante salée selon les instructions. Égouttez.',
+    'Passez les escalopes dans la farine, l''œuf battu, puis le panko. Faites chauffer 2 cs d''huile dans une poêle à feu moyen-vif et faites dorer les escalopes 3-4 min de chaque côté.',
+    'Servez les escalopes panées avec la ratatouille et le riz.'
+  )
+);
+
+INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
+VALUES (
+  'Cabillaud poêlé et brocoli croquant',
+  'https://www.hellofresh.fr/recipes/cabillaud-poele-et-brocoli-croquant-5e68df356a97885057660713',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/cabillaud-poele-et-brocoli-croquant-5e68df35-hero.jpg',
+  JSON_ARRAY('Poisson', 'Lactose'),
+  JSON_ARRAY('HelloFresh', 'Français'),
+  JSON_ARRAY('Diner'),
+  JSON_ARRAY(
+    JSON_OBJECT('nom', 'Filets de cabillaud', 'quantite', '2 (env. 280 g)'),
+    JSON_OBJECT('nom', 'Brocoli', 'quantite', '300 g'),
+    JSON_OBJECT('nom', 'Pommes de terre', 'quantite', '300 g'),
+    JSON_OBJECT('nom', 'Beurre', 'quantite', '30 g'),
+    JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Citron', 'quantite', '½'),
+    JSON_OBJECT('nom', 'Persil frais', 'quantite', '10 g'),
+    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '2 cs')
+  ),
+  JSON_ARRAY(
+    'Épluchez les pommes de terre et coupez-les en dés. Portez à ébullition dans une casserole d''eau salée et cuisez 12-15 min. Égouttez et écrasez avec 10 g de beurre. Salez, poivrez.',
+    'Détaillez le brocoli en petits bouquets. Faites-le blanchir 3-4 min dans de l''eau bouillante salée — il doit rester croquant. Égouttez et réservez.',
+    'Hachez finement l''ail et le persil.',
+    'Faites chauffer l''huile dans une poêle à feu moyen-vif. Salez et poivrez le cabillaud. Faites-le dorer 3-4 min de chaque côté selon l''épaisseur. Réservez.',
+    'Dans la même poêle, faites fondre les 20 g de beurre restants à feu moyen. Faites revenir l''ail 30 s, ajoutez le brocoli et réchauffez 2 min. Ajoutez le persil et le jus de citron. Servez le cabillaud avec le brocoli et la purée de pommes de terre.'
+  )
+);
+
+INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
+VALUES (
+  'Gratin de chou-fleur aux lardons',
+  'https://www.hellofresh.fr/recipes/gratin-de-chou-fleur-aux-lardons-671681129661bdb70be50767',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/gratin-de-chou-fleur-aux-lardons-67168112-hero.jpg',
   JSON_ARRAY('Lactose'),
   JSON_ARRAY('HelloFresh', 'Français'),
   JSON_ARRAY('Diner'),
   JSON_ARRAY(
-    JSON_OBJECT('nom', 'Filets de poulet', 'quantite', '2 (env. 300 g)'),
-    JSON_OBJECT('nom', 'Lardons fumés', 'quantite', '80 g'),
-    JSON_OBJECT('nom', 'Champignons de Paris', 'quantite', '200 g'),
-    JSON_OBJECT('nom', 'Courgette', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Poivron jaune', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Oignon', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Chou-fleur', 'quantite', '1 (env. 600 g)'),
+    JSON_OBJECT('nom', 'Lardons fumés', 'quantite', '100 g'),
+    JSON_OBJECT('nom', 'Pommes de terre', 'quantite', '200 g'),
+    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '200 ml'),
+    JSON_OBJECT('nom', 'Emmental râpé', 'quantite', '80 g'),
     JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '1'),
-    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '50 ml'),
+    JSON_OBJECT('nom', 'Noix de muscade', 'quantite', '1 pincée'),
+    JSON_OBJECT('nom', 'Beurre', 'quantite', '10 g (pour le plat)')
+  ),
+  JSON_ARRAY(
+    'Préchauffez le four à 200 °C (180 °C chaleur tournante). Retirez le cœur et les feuilles du chou-fleur, détaillez-le en bouquets. Épluchez les pommes de terre et coupez-les en morceaux.',
+    'Portez une grande casserole d''eau salée à ébullition. Faites cuire le chou-fleur et les pommes de terre 10-12 min — ils doivent rester légèrement fermes. Égouttez.',
+    'Dans une poêle sèche à feu moyen-vif, faites revenir les lardons 6-8 min jusqu''à dorure. Égouttez sur du papier absorbant.',
+    'Beurrez un plat à gratin. Frottez-le avec la gousse d''ail coupée en deux. Disposez le chou-fleur et les pommes de terre, salez, poivrez, ajoutez la muscade. Répartissez les lardons et versez la crème fraîche. Saupoudrez d''emmental.',
+    'Enfournez 20-25 min jusqu''à ce que le gratin soit doré et bouillonnant. Laissez reposer 5 min avant de servir.'
+  )
+);
+
+INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
+VALUES (
+  'Lasagne à la courgette et poireaux à la crème',
+  'https://www.hellofresh.fr/recipes/lasagne-a-la-courgette-et-poireaux-a-la-creme-5f8ea6ddff00421a7b333b0b',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/lasagne-a-la-courgette-et-poireaux-a-la-creme-5f8ea6dd-hero.jpg',
+  JSON_ARRAY('Gluten', 'Lactose'),
+  JSON_ARRAY('HelloFresh', 'Italien'),
+  JSON_ARRAY('Diner'),
+  JSON_ARRAY(
+    JSON_OBJECT('nom', 'Feuilles de lasagne fraîches', 'quantite', '200 g'),
+    JSON_OBJECT('nom', 'Courgette', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Poireau', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Ricotta', 'quantite', '250 g'),
+    JSON_OBJECT('nom', 'Mozzarella', 'quantite', '125 g'),
+    JSON_OBJECT('nom', 'Parmesan râpé', 'quantite', '30 g'),
+    JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '100 ml'),
+    JSON_OBJECT('nom', 'Beurre', 'quantite', '15 g'),
+    JSON_OBJECT('nom', 'Noix de muscade', 'quantite', '1 pincée')
+  ),
+  JSON_ARRAY(
+    'Préchauffez le four à 200 °C (180 °C chaleur tournante). Beurrez un plat à gratin. Rincez et émincez le poireau. Coupez la courgette en demi-rondelles fines. Hachez l''ail.',
+    'Faites fondre le beurre dans une poêle à feu moyen. Faites revenir le poireau et l''ail 5 min jusqu''à tendreté. Ajoutez la courgette et cuisez 3 min. Salez, poivrez.',
+    'Mélangez la ricotta avec la crème fraîche, la muscade, sel et poivre.',
+    'Dans le plat beurré, alternez les couches : feuilles de lasagne, mélange ricotta-crème, légumes poêlés, mozzarella déchirée. Répétez 2-3 fois. Terminez par les feuilles de lasagne et nappez du reste de ricotta-crème. Saupoudrez de parmesan et de mozzarella.',
+    'Enfournez 25-30 min jusqu''à ce que les lasagnes soient cuites et le dessus gratiné. Laissez reposer 5 min avant de servir.'
+  )
+);
+
+INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
+VALUES (
+  'Blanquette de veau aux lardons de Mamie Eliane',
+  'https://www.hellofresh.fr/recipes/blanquette-de-veau-aux-lardons-de-mamie-eliane-65ba428875a56b8c9f849006',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/blanquette-de-veau-aux-lardons-de-mamie-eliane-65ba4288-hero.jpg',
+  JSON_ARRAY('Gluten', 'Lactose'),
+  JSON_ARRAY('HelloFresh', 'Français'),
+  JSON_ARRAY('Diner'),
+  JSON_ARRAY(
+    JSON_OBJECT('nom', 'Sauté de veau', 'quantite', '300 g'),
+    JSON_OBJECT('nom', 'Lardons fumés', 'quantite', '75 g'),
+    JSON_OBJECT('nom', 'Riz', 'quantite', '120 g'),
+    JSON_OBJECT('nom', 'Carotte', 'quantite', '1 (env. 150 g)'),
+    JSON_OBJECT('nom', 'Poireau', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Oignon', 'quantite', '1'),
     JSON_OBJECT('nom', 'Thym séché', 'quantite', '½ sachet'),
+    JSON_OBJECT('nom', 'Feuille de laurier', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Farine', 'quantite', '1 cs'),
+    JSON_OBJECT('nom', 'Beurre', 'quantite', '20 g'),
+    JSON_OBJECT('nom', 'Crème fraîche', 'quantite', '50 ml'),
+    JSON_OBJECT('nom', 'Persil frais', 'quantite', '10 g')
+  ),
+  JSON_ARRAY(
+    'Pelez la carotte et coupez-la en rondelles. Émincez l''oignon. Rincez le poireau et coupez-le en tronçons.',
+    'Dans une cocotte, faites revenir les lardons à sec à feu moyen-vif 3-4 min. Ajoutez les morceaux de veau et faites dorer 5 min en remuant. Salez, poivrez.',
+    'Ajoutez les légumes, le thym et le laurier. Couvrez à hauteur d''eau froide (env. 600 ml). Portez à ébullition, écumez, puis laissez mijoter à couvert à feu doux 45 min jusqu''à ce que le veau soit tendre.',
+    'Cuisez le riz dans une casserole d''eau salée 10-12 min. Égouttez et réservez au chaud.',
+    'Retirez viande et légumes de la cocotte. Faites fondre le beurre dans la cocotte, ajoutez la farine et fouettez 1 min. Versez 200 ml du jus de cuisson et la crème fraîche. Faites épaissir 5 min en fouettant. Remettez viande et légumes, parsemez de persil et servez avec le riz.'
+  )
+);
+
+INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
+VALUES (
+  'Linguine aux poireaux & lardons',
+  'https://www.hellofresh.fr/recipes/linguine-aux-poireaux-and-lardons-64b00392565e2133abaa5ad0',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/linguine-aux-poireaux-and-lardons-64b00392-hero.jpg',
+  JSON_ARRAY('Gluten', 'Lactose'),
+  JSON_ARRAY('HelloFresh', 'Français'),
+  JSON_ARRAY('Diner'),
+  JSON_ARRAY(
+    JSON_OBJECT('nom', 'Linguine', 'quantite', '160 g'),
+    JSON_OBJECT('nom', 'Lardons fumés', 'quantite', '100 g'),
+    JSON_OBJECT('nom', 'Poireaux', 'quantite', '2 (env. 300 g)'),
+    JSON_OBJECT('nom', 'Échalote', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Crème fraîche liquide', 'quantite', '100 ml'),
+    JSON_OBJECT('nom', 'Parmesan râpé', 'quantite', '20 g'),
+    JSON_OBJECT('nom', 'Beurre', 'quantite', '15 g'),
+    JSON_OBJECT('nom', 'Noix de muscade', 'quantite', '1 pincée')
+  ),
+  JSON_ARRAY(
+    'Portez une grande casserole d''eau salée à ébullition. Cuisez les linguine 9-11 min selon les instructions. Réservez 1 louche d''eau de cuisson, puis égouttez.',
+    'Rincez les poireaux et émincez-les finement en rondelles. Émincez l''échalote et hachez l''ail.',
+    'Faites fondre le beurre dans une grande poêle à feu moyen. Faites revenir les lardons 3-4 min jusqu''à légère dorure.',
+    'Ajoutez les poireaux, l''échalote et l''ail. Couvrez et cuisez 8-10 min à feu doux en remuant de temps en temps, jusqu''à ce que les poireaux soient fondants.',
+    'Versez la crème fraîche et un peu d''eau de cuisson réservée. Laissez réduire 2-3 min. Ajoutez les linguine égouttées et mélangez bien. Assaisonnez de muscade, sel et poivre. Servez avec le parmesan.'
+  )
+);
+
+INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
+VALUES (
+  'Gratin de gnocchi au fromage italien & sauce tomate',
+  'https://www.hellofresh.fr/recipes/gratin-de-gnocchi-au-fromage-italien-and-sauce-tomate-618150f31714754f86432a95',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/gratin-de-gnocchi-au-fromage-italien-and-sauce-tomate-618150f3-hero.jpg',
+  JSON_ARRAY('Gluten', 'Lactose'),
+  JSON_ARRAY('HelloFresh', 'Italien'),
+  JSON_ARRAY('Diner'),
+  JSON_ARRAY(
+    JSON_OBJECT('nom', 'Gnocchi', 'quantite', '400 g'),
+    JSON_OBJECT('nom', 'Sauce tomate', 'quantite', '250 g'),
+    JSON_OBJECT('nom', 'Mozzarella', 'quantite', '125 g'),
+    JSON_OBJECT('nom', 'Parmesan râpé', 'quantite', '30 g'),
+    JSON_OBJECT('nom', 'Gousse d''ail', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Basilic frais', 'quantite', '5 g'),
+    JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '1 cs')
+  ),
+  JSON_ARRAY(
+    'Préchauffez le four à 200 °C (180 °C chaleur tournante). Hachez l''ail. Égouttez et déchirez la mozzarella en morceaux.',
+    'Dans une poêle, faites revenir l''ail dans l''huile d''olive 1 min à feu moyen. Ajoutez la sauce tomate et laissez mijoter 5 min en remuant. Salez, poivrez.',
+    'Dans un plat à four, mélangez les gnocchi (pas besoin de les précuire) avec la sauce tomate.',
+    'Répartissez les morceaux de mozzarella sur le dessus. Saupoudrez généreusement de parmesan.',
+    'Enfournez 20-25 min jusqu''à ce que le fromage soit doré et bouillonnant. Parsemez de basilic ciselé et servez aussitôt.'
+  )
+);
+
+INSERT INTO recettes (nom, lien, image, tags_allergies, tags_thematiques, tags_repas, ingredients, etapes)
+VALUES (
+  'Orzo pilaf italien aux épinards & tomates',
+  'https://www.hellofresh.fr/recipes/orzo-pilaf-italien-al-spinaci-and-pomodori-64073f9edf6297bb5beef2e6',
+  'https://media.hellofresh.com/image/upload/f_auto,fl_lossy,q_auto,w_1000/hellofresh_s3/image/orzo-pilaf-italien-al-spinaci-and-pomodori-64073f9e-hero.jpg',
+  JSON_ARRAY('Gluten', 'Lactose'),
+  JSON_ARRAY('HelloFresh', 'Italien'),
+  JSON_ARRAY('Diner'),
+  JSON_ARRAY(
+    JSON_OBJECT('nom', 'Orzo', 'quantite', '160 g'),
+    JSON_OBJECT('nom', 'Épinards frais', 'quantite', '100 g'),
+    JSON_OBJECT('nom', 'Tomates cerises', 'quantite', '200 g'),
+    JSON_OBJECT('nom', 'Échalote', 'quantite', '1'),
+    JSON_OBJECT('nom', 'Gousses d''ail', 'quantite', '2'),
+    JSON_OBJECT('nom', 'Parmesan râpé', 'quantite', '30 g'),
+    JSON_OBJECT('nom', 'Beurre', 'quantite', '15 g'),
+    JSON_OBJECT('nom', 'Bouillon de légumes en poudre', 'quantite', '½ cc (dans 400 ml eau chaude)'),
+    JSON_OBJECT('nom', 'Basilic frais', 'quantite', '5 g'),
     JSON_OBJECT('nom', 'Huile d''olive', 'quantite', '2 cs')
   ),
   JSON_ARRAY(
-    'Coupez la courgette en demi-rondelles. Coupez le poivron en lamelles. Nettoyez et émincez les champignons. Émincez l''oignon et hachez l''ail.',
-    'Faites chauffer 1 cs d''huile dans une grande poêle à feu moyen-vif. Salez et poivrez les filets de poulet. Faites-les dorer 5-6 min de chaque côté. Réservez sous papier aluminium.',
-    'Dans la même poêle, faites revenir les lardons 3 min. Ajoutez l''oignon et l''ail, poursuivez 2 min. Ajoutez les champignons, le poivron et la courgette. Faites sauter l''ensemble 6-8 min à feu moyen-vif jusqu''à légère dorure. Saupoudrez de thym, salez et poivrez.',
-    'Versez la crème fraîche dans la poêle et mélangez bien. Laissez chauffer 2 min pour lier la sauce.',
-    'Tranchez les filets de poulet et disposez-les dans les assiettes sur la poêlée de légumes et lardons. Servez immédiatement.'
+    'Préparez le bouillon avec l''eau chaude. Émincez l''échalote et hachez l''ail. Coupez les tomates cerises en deux.',
+    'Faites chauffer l''huile dans une casserole à feu moyen. Faites revenir l''échalote 2 min, ajoutez l''ail et l''orzo. Faites nacrer 1-2 min en remuant.',
+    'Versez le bouillon, portez à ébullition, puis réduisez à feu doux. Cuisez en remuant de temps en temps 8-10 min jusqu''à absorption du liquide.',
+    'Ajoutez les tomates cerises et les épinards. Couvrez et laissez fondre 2-3 min.',
+    'Hors du feu, incorporez le beurre et le parmesan. Ajustez l''assaisonnement. Parsemez de basilic ciselé et servez aussitôt.'
   )
 );
